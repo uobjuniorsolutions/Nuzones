@@ -37,7 +37,6 @@
         </dependency>
 	</dependencies>
 	<build>
-		<finalName>nuzones-service</finalName>
 		<plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
