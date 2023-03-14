@@ -1,0 +1,10 @@
+CREATE TABLE ZONES (
+    id   BIGINT NOT NULL AUTO_INCREMENT,
+    latitude DECIMAL(10,4) NOT NULL,
+    longitude DECIMAL(10,4) NOT NULL,
+    link VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description LONGTEXT NOT NULL,
+    PRIMARY KEY (id)
+);
