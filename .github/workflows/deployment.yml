@@ -46,10 +46,10 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3.0.2
         with:
-          name: nuzones-service-${{ github.sha }}.jar
+          name: nuzones-service
 
       - name: Deploy artifact
         uses: actions/deploy-pages@v1.2.5
         with:
-          artifact_name: nuzones-service-${{ github.sha }}.jar
+          artifact_name: nuzones-service
    
