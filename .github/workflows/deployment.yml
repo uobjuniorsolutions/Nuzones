@@ -30,31 +30,39 @@ jobs:
       
     - name: Rename the artifact
       run: cp target/nuzones-service-0.0.1-SNAPSHOT.jar nuzones-service-${{ github.sha }}.jar
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: nuzones-service
+        path: nuzones-service-${{ github.sha }}.jar
   
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment: nuzones
     steps:
-      - name: Copy build to host
-        uses: appleboy/scp-action@main
-        env:
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
-          username: ${{ secrets.SSH_USERNAME }}
+    - name: Download artifact
+        uses: actions/download-artifact@v3.0.2
         with:
-          source: "nuzones-service-${{ github.sha }}.jar"
-          target: "/app/nuzones"
+          name: nuzones-service
 
-      - name: Deploy artifact
-        uses: appleboy/ssh-action@main
-        with:
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
-          username: ${{ secrets.SSH_USERNAME }}
-          script: |
-            cd /app/nuzones
-            echo 'Deployment successful to digital ocean'
+    - name: Copy build to host
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: nuzones-service-${{ github.sha }}.jar
+        remote: app/nuzones/nuzones-service-${{ github.sha }}.jar
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy artifact
+      uses: appleboy/ssh-action@main
+      with:
+        host: ${{secrets.SSH_HOST}}
+        key: ${{secrets.SSH_PRIVATE_KEY}}
+        username: ${{ secrets.SSH_USERNAME }}
+        script: cd /app/nuzones && echo 'Deployment successful to digital ocean'
 #          script: mkdir -p $dir && java -jar nuzones-service-${{ github.sha }}.jar
 
             
