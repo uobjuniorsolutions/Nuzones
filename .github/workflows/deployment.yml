@@ -36,16 +36,15 @@ jobs:
     needs: build
     environment: nuzones
     steps:
-      # create directory on ubuntu, copy downloaded artifact into ubuntu and run java command
-      - name: Copy repository contents via scp
-          uses: appleboy/scp-action@main
-          env:
-            host: ${{secrets.SSH_HOST}}
-            key: ${{secrets.SSH_PRIVATE_KEY}}
-            username: ${{ secrets.SSH_USERNAME }}
-          with:
-            source: "nuzones-service-${{ github.sha }}.jar"
-            target: "/app/nuzones"
+      - name: Copy build to host
+        uses: appleboy/scp-action@main
+        env:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+        with:
+          source: "nuzones-service-${{ github.sha }}.jar"
+          target: "/app/nuzones"
 
       - name: Deploy artifact
         uses: appleboy/ssh-action@main
