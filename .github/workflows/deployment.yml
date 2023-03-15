@@ -57,7 +57,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy artifact
-      uses: appleboy/ssh-action@main
+      uses: appleboy/ssh-action@v0.1.2
       with:
         host: ${{secrets.SSH_HOST}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
