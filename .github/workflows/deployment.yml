@@ -43,9 +43,9 @@ jobs:
     environment: nuzones
     steps:
     - name: Download artifact
-        uses: actions/download-artifact@v3.0.2
-        with:
-          name: nuzones-service
+      uses: actions/download-artifact@v3.0.2
+      with:
+        name: nuzones-service
 
     - name: Copy build to host
       uses: garygrossgarten/github-action-scp@release
