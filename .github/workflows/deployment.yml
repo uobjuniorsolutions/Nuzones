@@ -41,11 +41,11 @@ jobs:
     - name: Copy build to host
       uses: appleboy/scp-action@master
       with:
-        source: nuzones-service-${{ github.sha }}.jar
-        target: app/nuzones/nuzones-service-${{ github.sha }}.jar
         host: ${{ secrets.HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: nuzones-service-${{ github.sha }}.jar
+        target: app/nuzones/nuzones-service-${{ github.sha }}.jar
 
     - name: Deploy artifact
       uses: appleboy/ssh-action@v0.1.2
