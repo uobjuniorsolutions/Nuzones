@@ -3,12 +3,12 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 // Components imports
-import About from './components/About'
-import FindZone from './components/FindZone'
-import Contact from './components/Contact'
-import Home from './components/Home'
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
+import About from './pages/About/About'
+import FindZone from './pages/FindZone/FindZone'
+import Contact from './pages/Contact/Contact'
+import Home from './pages/Home/Home'
+import Navbar from './pages/layout/Navbar'
+import Footer from './pages/layout/Footer'
 
 function App() {
   return (
