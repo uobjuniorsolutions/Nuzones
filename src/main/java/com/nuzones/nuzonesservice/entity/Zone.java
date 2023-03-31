@@ -1,7 +1,8 @@
 package com.nuzones.nuzonesservice.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
+
+import javax.persistence.*;
 
 @Table(name = "zones")
 @Entity
