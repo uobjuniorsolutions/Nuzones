@@ -15,7 +15,7 @@ import java.io.IOException;
  * @created 01/04/2023
  */
 @Configuration
-//@Profile("test")
+@Profile("test")
 public class MvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
