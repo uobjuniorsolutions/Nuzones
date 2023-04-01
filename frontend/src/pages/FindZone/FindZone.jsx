@@ -4,7 +4,7 @@ import styles from './FindZone.module.css'
 function FindZone() {
   return (
     <div className='content'>
-      <h1 className='title'>Find a Crew</h1>
+      <h1 className='title'>Find a Zone</h1>
       <input className={styles.search} placeholder="Search"/>
       <div className={styles.map}>Place the map here</div>
       <div className={styles.missZone}>

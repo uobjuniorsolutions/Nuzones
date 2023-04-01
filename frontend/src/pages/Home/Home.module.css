@@ -15,20 +15,20 @@ Need to tidy up a bit to see what's common among all those sections
 
 .adventures {
     background-image: url('bikeHeaderHome.png');
-    height: 1200px;
+    height: 1500px;
     width: 100%;
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 }
 
 .heroTitle {
     font-weight: 600;
-    font-size: 50px;
+    font-size: 85px;
     color: white;
     margin-top: 50px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
