@@ -16,7 +16,7 @@ jobs:
         distribution: 'corretto'
         cache: maven
     - name: Running Tests
-      run: mvn -B clean package --file pom.xml
+      run: ./mvnw -B clean package --file pom.xml
     - name: Heroku Container Registry Login
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
