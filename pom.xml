@@ -65,7 +65,6 @@
 							<nodeVersion>v18.15.0</nodeVersion>
 							<npmVersion>9.6.3</npmVersion>
 						</configuration>
-                        <phase>generate-resources</phase>
                     </execution>
                     <execution>
                         <id>npm install</id>
@@ -92,7 +91,7 @@
                 <executions>
                     <execution>
                         <id>copy build from frontend</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
