@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem; /* 1rem = 20px here because defined for * to be 20px */
+    background-color: #023047;
+}
+  
+.navbar_logo {
+    /* might need to specify font size */
+    font-weight: 600; /* equivalent to semibold */
+}
+
+.navbar_links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-weight: 400;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}

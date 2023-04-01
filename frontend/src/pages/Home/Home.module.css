@@ -1,0 +1,192 @@
+/* 
+This CSS file is a bit of a mess. 
+Need to tidy up a bit to see what's common among all those sections 
+*/
+
+.content {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    gap: 20px;
+}
+
+.adventures {
+    background-image: url('../bikeHeaderHome.png');
+    height: 1500px;
+    width: 100%;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.heroTitle {
+    font-weight: 600;
+    font-size: 85px;
+    color: white;
+    margin-top: 50px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bottomContainer {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.description p {
+    color: white;
+    font-size: 25px;
+}
+
+.buttonContainer {
+    background: rgba(2, 48, 71, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 15px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.videoContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 80px 0px;
+    align-items: center;
+}
+
+.video {
+    width: 60%;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    border-radius: 20px;
+}
+
+.videoText {
+    width: 30%;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.videoText p {
+    max-width: 200px;
+    text-align: center;
+}
+
+.sponsors {
+    background-color: #045680;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 80px 0px;
+    align-items: center;
+}
+
+.sponsors h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.sponsors h2 {
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.sponsorsPics {
+    padding: 40px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.sponsorsElement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.help {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 80px 0px;
+    align-items: center;
+}
+
+.help h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.helpContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 40px;
+    align-items: center;
+}
+
+/* .values {
+
+} */
+
+.valuesName {
+    font-size: 30;
+    font-weight: 600;
+}
+
+.valuesTextBox {
+    background-color: #D9D9D9;
+    color: black;
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instagram {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 80px 0px;
+    align-items: center;
+}
+
+.instagram h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
