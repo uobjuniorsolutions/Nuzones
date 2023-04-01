@@ -11,6 +11,7 @@
 	<groupId>com.nuzones</groupId>
 	<artifactId>nuzones-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 	<name>nuzones-service</name>
 	<description>Nuzones application</description>
 	<properties>
