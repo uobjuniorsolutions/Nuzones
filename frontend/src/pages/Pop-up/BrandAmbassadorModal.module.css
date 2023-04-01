@@ -1,0 +1,49 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .title {
+
+}
+
+.subtitle {
+
+} */
+
+.form {
+    width: 100%;
+}
+
+.form_row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.button_row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cancel {
+    cursor: pointer;
+    background-color: #FF6C6C;
+    border-style: none;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
+    color: white;
+}
+
+.submit {
+    cursor: pointer;
+    background-color: #179EFF;
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px ;
+    width: 50%;
+    color: white;
+}

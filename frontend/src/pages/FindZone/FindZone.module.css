@@ -35,3 +35,26 @@
     border-radius: 10px;
     padding: 10px 20px;
 }
+
+.openZone {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.submit {
+    cursor: pointer;
+    background-color: #86F29E;
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.cancel {
+    cursor: pointer;
+    background-color: #F1958F;
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}

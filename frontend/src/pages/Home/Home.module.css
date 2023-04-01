@@ -105,7 +105,7 @@ Need to tidy up a bit to see what's common among all those sections
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 80px;
+    padding: 80px 0px;
     align-items: center;
 }
 
@@ -120,7 +120,7 @@ Need to tidy up a bit to see what's common among all those sections
 }
 
 .sponsorsPics {
-    padding: 40px;
+    padding: 40px 0px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -139,7 +139,7 @@ Need to tidy up a bit to see what's common among all those sections
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 80px;
+    padding: 80px 0px;
     align-items: center;
 }
 
@@ -156,9 +156,9 @@ Need to tidy up a bit to see what's common among all those sections
     align-items: center;
 }
 
-.values {
+/* .values {
 
-}
+} */
 
 .valuesName {
     font-size: 30;
@@ -182,7 +182,7 @@ Need to tidy up a bit to see what's common among all those sections
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 80px;
+    padding: 80px 0px;
     align-items: center;
 }
 

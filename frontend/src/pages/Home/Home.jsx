@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Home.module.css'
+import BrandAmbassadorModal from '../Pop-up/BrandAmbassadorModal';
 
 function Home() {
 
   // Could add a scroll down thingy below share your adventures?
   // Add hover effects?
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function toggleModal() {
+    setIsModalOpen(!isModalOpen);
+  }
 
   return (
     <div className={styles.content}>
@@ -18,7 +25,10 @@ function Home() {
           </div>
           <div className={styles.buttonContainer}>
             <button className='find_crew'>Find a Crew</button>
-            <button className='brand_ambassador'>Become a Brand Ambassador</button>
+            <button className='brand_ambassador' onClick={toggleModal} >Become a Brand Ambassador</button>
+
+            <BrandAmbassadorModal toggleModal={toggleModal} isModalOpen={isModalOpen}/>
+
           </div>
         </div>
       </div>
