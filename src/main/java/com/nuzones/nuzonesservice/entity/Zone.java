@@ -18,7 +18,8 @@ public class Zone {
     private double latitude;
     private double longitude;
     private String title;
-    private String link;
-    private String image;
+    private String groupLink;
+    private String imageUrl;
     private String description;
+    private int rating;
 }
