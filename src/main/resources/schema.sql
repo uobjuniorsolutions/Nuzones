@@ -7,5 +7,7 @@ CREATE TABLE IF NOT EXISTS ZONES (
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     rating INT DEFAULT 0,
+    deleted BIT DEFAULT 0,
+    created_on DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
