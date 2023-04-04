@@ -29,7 +29,7 @@ public class ZoneController {
     }
 
     @GetMapping("/{id}")
-    public ZoneDto getAllZones(Long id){
+    public ZoneDto getAllZones(@PathVariable("id") Long id){
         return zoneService.fetchZoneByID(id);
     }
 
@@ -40,12 +40,12 @@ public class ZoneController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void deleteZone(Long id) {
+    public void deleteZone(@PathVariable("id") Long id) {
         zoneService.removeZoneByID(id);
     }
 
     @GetMapping("/search")
-    public List<ZoneDto> searchZone(@RequestParam("name") String name) {
-        return zoneService.searchZonesByName(name);
+    public List<ZoneDto> searchZone(@RequestParam("title") String title) {
+        return zoneService.searchZonesByTitle(title);
     }
 }
