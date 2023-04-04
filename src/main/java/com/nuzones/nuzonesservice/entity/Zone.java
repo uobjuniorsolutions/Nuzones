@@ -4,6 +4,9 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Table(name = "zones")
 @Entity
 @Getter
@@ -22,4 +25,6 @@ public class Zone {
     private String imageUrl;
     private String description;
     private int rating;
+    private boolean deleted;
+    private LocalDateTime createdOn;
 }
