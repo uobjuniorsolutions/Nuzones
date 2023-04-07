@@ -34,6 +34,7 @@ public class ZoneController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ZoneCreationResponseDto createZone(@RequestBody ZoneCreationDto zoneCreationDto) {
         return zoneService.createZone(zoneCreationDto);
     }
