@@ -25,7 +25,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        ApiKeyAuthFilter filter = new ApiKeyAuthFilter("x-api-key");
+        var filter = new ApiKeyAuthFilter("x-api-key");
         filter.setAuthenticationManager(
                 authentication -> {
                     String principal = (String) authentication.getPrincipal();
