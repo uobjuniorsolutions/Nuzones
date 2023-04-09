@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import styles from './FindZone.module.css'
 
+// MUI Rating component import
+import { Rating } from '@mui/material';
+
 function FindZone() {
 
   const [openZone, setOpenZone] = useState(false);
+
+  const [rating, setRating] = useState(0)
 
   function toggleOpenZone() {
     setOpenZone(!openZone);
@@ -20,13 +25,28 @@ function FindZone() {
 
         {openZone ?
         <div className={styles.openZone}>
-          <input placeholder='Type a location'/>
-          <button className={styles.submit}>Submit</button>
-          <button className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
+          <div className={styles.inputs}>
+            <input placeholder='Type a location'/>
+            <textarea rows={4} placeholder='Description of this location'/>
+            <div className={styles.rating}>
+              <p>Rating: </p> 
+              <Rating name="rating" value={rating}
+                onChange={(event, newRating) => {
+                  setRating(newRating);
+                }} 
+              />
+            </div>
+            
+          </div>
+          <div className={styles.buttonRow}>
+            <button className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
+            <button className={styles.submit}>Submit</button>
+          </div>
         </div>
         :
         <button className={styles.addZone} onClick={toggleOpenZone}>Add a Zone</button>
         }
+
       </div>
     </div>
   )
