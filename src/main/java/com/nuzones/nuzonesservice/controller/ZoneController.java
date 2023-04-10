@@ -16,6 +16,7 @@ import java.util.List;
  * @author Emmanuel Abajo
  * @created 03/04/2023
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/zones")
 @RequiredArgsConstructor
