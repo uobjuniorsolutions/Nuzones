@@ -9,5 +9,4 @@ public class NuzonesServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NuzonesServiceApplication.class, args);
 	}
-
 }

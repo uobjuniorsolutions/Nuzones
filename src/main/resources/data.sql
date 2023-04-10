@@ -1,2 +1,0 @@
-INSERT INTO ZONES (id, latitude, longitude, link, image, title, description)
-VALUES (1, 14.0012, 32.0844, 'https://fb.com/groups', 'https://awscdn.com/image', 'Birmingham Nuzone', 'You are welcome to cycle in the west midlands');

@@ -1,7 +1,11 @@
 package com.nuzones.nuzonesservice.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Table(name = "zones")
 @Entity
@@ -17,7 +21,10 @@ public class Zone {
     private double latitude;
     private double longitude;
     private String title;
-    private String link;
-    private String image;
+    private String groupLink;
+    private String imageUrl;
     private String description;
+    private int rating;
+    private boolean deleted;
+    private LocalDateTime createdOn;
 }
