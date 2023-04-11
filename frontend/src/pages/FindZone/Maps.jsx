@@ -1,5 +1,8 @@
-import React, { useState, useCallback } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import React, { useState, useCallback, useEffect } from 'react'
+import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
+
+// Styles import
+import styles from './Maps.module.css'
 
 const containerStyle = {
     width: '100%',
@@ -12,125 +15,100 @@ const center = {
     lng: -1.389
 }
 
-const tempZones = {
-    "content": [
-      {
-        "id": 1,
-        "latitude": 14.0012,
-        "longitude": 32.0844,
-        "title": "Birmingham Nuzone",
-        "groupLink": "https://fb.com/groups",
-        "imageUrl": "https://awscdn.com/image_1",
-        "description": "You are welcome to cycle in the west midlands",
-        "rating": 0
-      },
-      {
-        "id": 2,
-        "latitude": 15.0012,
-        "longitude": 31.0844,
-        "title": "London Nuzone",
-        "groupLink": "https://fb.com/groups",
-        "imageUrl": "https://awscdn.com/image_2",
-        "description": "You are welcome to cycle in the London",
-        "rating": 3
-      },
-      {
-        "id": 3,
-        "latitude": 10.0011,
-        "longitude": 23.0844,
-        "title": "Glasgow Nuzone",
-        "groupLink": "https://fb.com/groups",
-        "imageUrl": "https://awscdn.com/image_3",
-        "description": "You are welcome to cycle in the Glasgow",
-        "rating": 1
-      },
-      {
-        "id": 4,
-        "latitude": 18.0012,
-        "longitude": 34.0844,
-        "title": "Dublin Nuzone",
-        "groupLink": "https://fb.com/groups",
-        "imageUrl": "https://awscdn.com/image_4",
-        "description": "You are welcome to cycle in Dublin",
-        "rating": 2
-      },
-      {
-        "id": 5,
-        "latitude": 20,
-        "longitude": 31.0844,
-        "title": "Manchester Nuzone",
-        "groupLink": "https://fb.com/groups",
-        "imageUrl": "https://awscdn.com/image_5",
-        "description": "You are welcome to cycle in Manchester",
-        "rating": 4
-      },
-      {
-        "id": 6,
-        "latitude": 12.0003,
-        "longitude": 34.01,
-        "title": "Birmingham zone 2",
-        "groupLink": "https://fb.groups.com/brum",
-        "imageUrl": "https://cdn.images.com/ddfd-894379-csdfi4",
-        "description": "mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed nisi",
-        "rating": 4
-      }
-    ]
-  }
-
-// For testing purposes
-const getTempZones = async () => {
-    let response = await fetch('localhost:8080/api/v1/zones')
-    let data = await response.json()
-    console.log('DATA:', data)
-    setZones(data)
-}
-
 function Maps() {
 
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4"
-    })
+  const [map, setMap] = useState(null);
+  const [zones, setZones] = useState([]);
+  const [activeMarker, setActiveMarker] = useState(null);
 
-    const [map, setMap] = useState(null);
+  const getZones = async () => {
+    let response = await fetch('http://localhost:8080/api/v1/zones')
+    let data = await response.json()
+    setZones(data.content)
+  }
 
-    // const onLoad = useCallback(function callback(map) {
-    //     // const bounds = new window.google.maps.LatLngBounds(center);
-    //     // map.fitBounds(bounds);
+  useEffect(() => {
+    getZones();
+  }, []);
 
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4"
+  })
 
+  const handleActiveMarker = (marker) => {
+    if (marker === activeMarker) {
+      return;
+    } else if (marker === null) {
+      setActiveMarker(null);
+    } else {
+      setActiveMarker(marker);
+    }
+  };
 
-    //     setMap(map);
-    // }, [])
+  // Not being used for now because markers are too far from center. Will change in the future
+  // Might look into this to fix the problem with the click outside redirecting to center!
+  const onLoad = (map) => {
+    const bounds = new google.maps.LatLngBounds(center);
+    zones.forEach(({ latitude, longitude }) => bounds.extend({lat: latitude, lng: longitude}));
+    map.fitBounds(bounds);
 
-    // const onUnmount = useCallback(function callback(map) {
-    //     setMap(null)
-    // }, [])
+    setMap(map);
+  };
 
-    return isLoaded ? (
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null)
+}, [])
 
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={7}
-            // onLoad={onLoad}
-            // onUnmount={onUnmount}
-        >
+  return isLoaded ? (
+    <GoogleMap
+        mapContainerStyle={containerStyle}
+        // center={center}
+        center={{lat: 20, lng: 31.0844}} //For the current zone!
+        zoom={7}
+        onClick={() => handleActiveMarker(null)}
+        // onLoad={onLoad}
+        onLoad={map => setMap(map)}
+        onUnmount={onUnmount}
+    >
 
-            { (tempZones.content).map(zone => (
-                <Marker 
-                    key={zone.id}
-                    position={{
-                        lat: zone.latitude, 
-                        lng: zone.longitude
-                    }}
-                    
-                />
-            )) }
+        { zones.map(zone => (
 
-        </GoogleMap>
+            <Marker 
+                key={zone.id}
+                position={{
+                    lat: zone.latitude, 
+                    lng: zone.longitude
+                }}  
+                onClick={() => {
+                  handleActiveMarker(zone.id);
+                }}  
+            >
 
-    ) : <></>
+              {activeMarker === zone.id ? (
+                <InfoWindowF onCloseClick={() => handleActiveMarker(null)} onLoad={() => map.panTo({lat: zone.latitude, lng: zone.longitude})}
+                  options={{overflow: 'hidden'}}
+                >
+                  <div className={styles.infoContainer}>
+                    <div className={styles.leftContainer}>
+                      <div>
+                        <h1>{zone.title}</h1>
+                        <h2 className={styles.coordinates} style={{fontFamily: 'monospace'}}>{zone.latitude}, {zone.longitude}</h2>
+                      </div>
+                      <p className={styles.description}>Description: {zone.description}</p>
+                      <button>
+                        <a href={zone.groupLink} target='_blank' style={{textDecoration: 'none', color: 'inherit'}}>Go to community</a>
+                      </button>
+                    </div>
+                    <img className={styles.image} src='./Middle.jpg' />
+                  </div>
+                </InfoWindowF>
+              ) : null}
+
+            </Marker>
+        )) }
+
+    </GoogleMap>
+  ) : <></>
 }
 
 export default Maps

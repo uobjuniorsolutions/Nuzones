@@ -1,0 +1,37 @@
+.infoContainer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.coordinates, .description {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.image {
+    width: 50%;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 3px solid #e9e9ed;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 500px) {
+    .infoContainer {
+        flex-direction: column-reverse;
+    }
+
+    .leftContainer, .image {
+        width: auto;
+    } 
+}
