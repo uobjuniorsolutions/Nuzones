@@ -22,8 +22,8 @@ function Maps() {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const getZones = async () => {
-    // let response = await fetch('http://localhost:8080/api/v1/zones')
-    let response = await fetch('https://nuzones.herokuapp.com/api/v1/zones')
+    // let response = await fetch('https://nuzones.herokuapp.com/api/v1/zones')
+    let response = await fetch('/api/v1/zones')
     let data = await response.json()
     setZones(data.content)
   }
