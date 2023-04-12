@@ -33,6 +33,9 @@
 
     .leftContainer, .image {
         width: auto;
-        height: auto;
     } 
+
+    .image {
+        max-height: 200px;
+    }
 }
