@@ -9,17 +9,20 @@ import Contact from './pages/Contact/Contact'
 import Home from './pages/Home/Home'
 import Navbar from './pages/layout/Navbar'
 import Footer from './pages/layout/Footer'
+import ScrollToTop from './ScrollToTop'
 
 function App() {
   return (
     <>
         <Navbar />
-        <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/zone' element={<FindZone />}/>
-            <Route path='/about' element={<About />}/>
-            <Route path='/contact' element={<Contact />}/>
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+              <Route path='/' element={<Home />}/>
+              <Route path='/zone' element={<FindZone />}/>
+              <Route path='/about' element={<About />}/>
+              <Route path='/contact' element={<Contact />}/>
+          </Routes>
+        </ScrollToTop>
         <Footer />
     </>
   )

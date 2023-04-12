@@ -11,14 +11,154 @@
     font-weight: 600; /* equivalent to semibold */
 }
 
-.navbar_links {
+/* .navbar_links ul {
     display: flex;
     flex-direction: row;
     gap: 20px;
     font-weight: 400;
+} */
+
+.navbar_links li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.navbar_links li a {
+    padding: 0px 3px;
+    text-align: center;
+    display: inline-block;
+}
+
+.navbar_links a:hover {
+    font-weight: 600;
+}
+
+.navbar_links a::before {
+    display: block;
+    content: attr(title);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
+}
+
+/* Hamburger Menu Section below */
+
+/* Styling of the hamburger menu icon */
+
+.menuBar {
+    display: none;
+    width: 2rem;
+    /* height: 40px; */
+    /* margin: 30px 0 20px 20px; */
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+}
+
+.bar {
+    height: 0.25rem;
+    width: 100%;
+    background-color: white;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#bar1 {
+    transform: translateY(-0.25rem);
+}
+
+#bar3 {
+    transform: translateY(0.25rem);
+}
+
+/* Nav text styling */
+
+.nav {
+    transition: 0.3s ease;
+    display: none;
+    position: absolute;
+    top: 7vh;
+    right: 0;
+    z-index: 2;
+}
+  
+.nav ul {
+    padding: 0 22px;
+}
+  
+.nav li {
+    list-style: none;
+    padding: 12px 0;
+    text-align: right;
+}
+  
+.nav li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+  
+.nav li a:hover {
+    font-weight: bold;
+}
+  
+/* Styling of the round background */
+  
+.menuBg {
+    top: 0;
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 30px 0 20px 20px;
+    background: radial-gradient(circle, #fb8500, #fb8500);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+  
+/* Styling after the change (when menu is open) */
+
+.change {
+    display: block;
+}
+  
+.change .bar {
+    background-color: white;
+}
+  
+.change #bar1 {
+    transform: translateY(0.25rem) rotateZ(-45deg);
+}
+  
+.change #bar2 {
+    opacity: 0;
+}
+  
+.change #bar3 {
+    transform: translateY(-0.25rem) rotateZ(45deg);
+}
+  
+.changeBg {
+    width: 500px;
+    height: 400px;
+    transform: translate(60%,-30%);
+}
+
+@media screen and (max-width: 410px) {
+    .navbar_links {
+        display: none;
+    }
+
+    .menuBar {
+        display: block;
+    }
 }

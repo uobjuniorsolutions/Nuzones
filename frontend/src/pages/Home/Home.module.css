@@ -10,53 +10,63 @@ Need to tidy up a bit to see what's common among all those sections
     flex-direction: column;
     align-items: center;
     margin: 0;
-    gap: 20px;
+    gap: 1rem;
 }
 
 .adventures {
-    background-image: url('../bikeHeaderHome.png');
-    height: 1500px;
+    background-image: url('../mainImage1.jpg');
+    /* height: calc(100vh - 8vh); */
+    /* height: 100vh; */
+    height: 35rem;
     width: 100%;
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
+    justify-content: center;
 }
 
 .heroTitle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     font-weight: 600;
-    font-size: 85px;
+    font-size: 3.5rem;
     color: white;
-    margin-top: 50px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0 2rem;
 }
 
 .bottomContainer {
-    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1rem;
     text-align: center;
     align-items: center;
+    padding: 0 2rem;
 }
 
 .description p {
     color: white;
-    font-size: 25px;
+    font-size: 1rem;
 }
 
 .buttonContainer {
     background: rgba(2, 48, 71, 0.7);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    padding: 15px;
+    border-radius: 1rem;
+    padding: 0.5rem;
     width: fit-content;
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 0.5rem;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
 }
 
 .videoContainer {
@@ -64,7 +74,8 @@ Need to tidy up a bit to see what's common among all those sections
     height: fit-content;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
     padding: 80px 0px;
     align-items: center;
 }
@@ -110,50 +121,83 @@ Need to tidy up a bit to see what's common among all those sections
 }
 
 .sponsors h1 {
-    font-size: 50px;
+    font-size: 2rem;
     font-weight: 500;
+    text-align: center;
+    padding: 0 2rem;
 }
 
 .sponsors h2 {
-    font-size: 25px;
+    font-size: 1rem;
     font-weight: 300;
+    text-align: center;
+    padding: 0 2rem;
 }
 
 .sponsorsPics {
-    padding: 40px 0px;
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    align-items: stretch;
 }
 
 .sponsorsElement {
+    width: min-content;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem
+}
+
+.sponsorsElement img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 .help {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2rem;
     padding: 80px 0px;
     align-items: center;
 }
 
 .help h1 {
-    font-size: 50px;
+    font-size: 2rem;
     font-weight: 500;
+    text-align: center;
+    padding: 0 2rem;
 }
 
 .helpContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 40px;
+    gap: 2rem;
     align-items: center;
+    padding: 0 2rem;
+}
+
+.helpTextBox {
+    text-align: left;
+}
+
+.helpImageContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.helpImageContainer img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 /* .values {
@@ -161,17 +205,19 @@ Need to tidy up a bit to see what's common among all those sections
 } */
 
 .valuesName {
-    font-size: 30;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .valuesTextBox {
     background-color: #D9D9D9;
+    width: 100% ;
+    flex-grow: 1;
+    justify-content: center;
     color: black;
     border-style: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-    width: 50%;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,6 +233,59 @@ Need to tidy up a bit to see what's common among all those sections
 }
 
 .instagram h1 {
-    font-size: 50px;
+    font-size: 2rem;
     font-weight: 500;
+}
+
+/* BREAKPOINTS */
+
+@media screen and (max-width: 1200px) {
+    .helpContainer {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    .videoContainer {
+        flex-direction: column;
+        padding: 40px 0px;
+    }
+
+    .video {
+        width: 90%;
+    }
+
+    .videoText {
+        width: 90%;
+    }
+    
+    .sponsorsPics {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .helpImageContainer {
+        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 551px) {
+
+    .adventures {
+        gap: 1rem;
+    }
+
+    .bottomContainer {
+        gap: 1rem;
+    }
+
+    .heroTitle {
+        line-height: 1;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+    }
 }

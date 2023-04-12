@@ -1,11 +1,13 @@
 .search {
-    width: 80%;
+    width: 90%;
+    justify-content: center;
     padding: 7px;
+    box-sizing: border-box;
 }
 
 .map {
-    width: 81%;
-    height: 500px;
+    width: 90%;
+    height: 95vh;
     border: 2px solid #e3e3e3;
     border-radius: 10px;
     display: flex;
@@ -15,16 +17,17 @@
 }
 
 .missZone {
-    margin-top: 40px;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    text-align: center;
 }
 
 .missZone h2 {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 1.5rem;
 }
 
 .addZone {
@@ -39,11 +42,32 @@
 .openZone {
     margin-top: 15px;
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rating {
+    display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 .submit {
+    width: 100%;
     cursor: pointer;
     background-color: #86F29E;
     border-style: none;
@@ -52,9 +76,16 @@
 }
 
 .cancel {
+    width: 100%;
     cursor: pointer;
     background-color: #F1958F;
     border-style: none;
     border-radius: 10px;
     padding: 10px 20px;
+}
+
+@media screen and (max-width: 500px) {
+    /* .openZone {
+        flex-direction: column;
+    } */
 }
