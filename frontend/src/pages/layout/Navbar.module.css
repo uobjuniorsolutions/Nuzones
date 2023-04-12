@@ -148,9 +148,11 @@
 }
   
 .changeBg {
-    width: 500px;
-    height: 400px;
-    transform: translate(60%,-30%);
+    top: -100px;
+    right: -250px;
+    width: 425px;
+    height: 350px;
+    /* transform: translate(60%,-30%); */
 }
 
 @media screen and (max-width: 410px) {
