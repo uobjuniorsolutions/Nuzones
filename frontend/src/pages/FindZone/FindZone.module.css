@@ -1,3 +1,7 @@
+button {
+    text-decoration: none;
+}
+
 .search {
     width: 90%;
     justify-content: center;
