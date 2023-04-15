@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS ZONES (
     group_link VARCHAR(255) NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     title VARCHAR(255) NOT NULL,
+    exact_name VARCHAR(255),
     description VARCHAR(255) NOT NULL,
     rating INT DEFAULT 0,
     deleted BOOLEAN DEFAULT FALSE,

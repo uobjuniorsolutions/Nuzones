@@ -16,4 +16,5 @@ public class ZoneDto {
     private String imageUrl;
     private String description;
     private int rating;
+    private String exactName;
 }

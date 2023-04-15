@@ -21,6 +21,7 @@ public class Zone {
     private double latitude;
     private double longitude;
     private String title;
+    private String exactName;
     private String groupLink;
     private String imageUrl;
     private String description;
