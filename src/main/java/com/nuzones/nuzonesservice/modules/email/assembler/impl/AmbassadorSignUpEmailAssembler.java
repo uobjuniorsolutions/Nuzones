@@ -1,12 +1,10 @@
 package com.nuzones.nuzonesservice.modules.email.assembler.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nuzones.nuzonesservice.exception.BadRequestException;
 import com.nuzones.nuzonesservice.modules.email.assembler.EmailRequestAssembler;
 import com.nuzones.nuzonesservice.modules.email.model.AmbassadorSignupRequest;
 import com.nuzones.nuzonesservice.modules.email.model.EmailRequest;
 import com.nuzones.nuzonesservice.modules.email.util.ObjectTransformer;
-import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +15,6 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author Emmanuel Abajo
