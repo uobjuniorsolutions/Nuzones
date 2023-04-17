@@ -37,13 +37,9 @@ public class AmbassadorSignUpEmailAssembler implements EmailRequestAssembler {
 
     @Override
     public EmailRequest assemble(Object body) {
-        var transformer = new ObjectTransformer(objectMapper);
+        var transformer = new ObjectTransformer(objectMapper, validator);
         var request = transformer.transform(body, AmbassadorSignupRequest.class);
         log.info("Assembled request: {}", request);
-        Set<ConstraintViolation<AmbassadorSignupRequest>> violations = validator.validate(request);
-        if (!violations.isEmpty()) {
-            throw new BadRequestException(violations.iterator().next().getMessage());
-        }
 
         Context context = new Context();
         Map<String, Object> properties = new HashMap<>();
