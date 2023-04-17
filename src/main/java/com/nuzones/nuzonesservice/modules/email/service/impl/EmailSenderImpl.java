@@ -9,11 +9,13 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Emmanuel Abajo
  * @created 17/04/2023
  */
+@Service
 @RequiredArgsConstructor
 public class EmailSenderImpl implements EmailSender {
 
