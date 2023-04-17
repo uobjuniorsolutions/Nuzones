@@ -1,4 +1,4 @@
-package com.nuzones.nuzonesservice.entity;
+package com.nuzones.nuzonesservice.modules.zone.entity;
 
 import lombok.*;
 

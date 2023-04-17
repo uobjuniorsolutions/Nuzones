@@ -1,12 +1,12 @@
-package com.nuzones.nuzonesservice.service.impl;
+package com.nuzones.nuzonesservice.modules.zone.service.impl;
 
-import com.nuzones.nuzonesservice.dto.request.ZoneCreationDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneCreationResponseDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneDto;
-import com.nuzones.nuzonesservice.entity.Zone;
+import com.nuzones.nuzonesservice.modules.zone.dto.request.ZoneCreationDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneCreationResponseDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneDto;
+import com.nuzones.nuzonesservice.modules.zone.entity.Zone;
 import com.nuzones.nuzonesservice.exception.NotFoundException;
-import com.nuzones.nuzonesservice.repository.ZoneRepository;
-import com.nuzones.nuzonesservice.service.ZoneService;
+import com.nuzones.nuzonesservice.modules.zone.service.ZoneService;
+import com.nuzones.nuzonesservice.modules.zone.repository.ZoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;

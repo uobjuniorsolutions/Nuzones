@@ -1,4 +1,4 @@
-package com.nuzones.nuzonesservice.dto.response;
+package com.nuzones.nuzonesservice.modules.zone.dto.response;
 
 import lombok.Data;
 
