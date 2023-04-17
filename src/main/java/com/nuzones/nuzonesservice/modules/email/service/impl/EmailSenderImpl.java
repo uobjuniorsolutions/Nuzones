@@ -4,6 +4,7 @@ import com.nuzones.nuzonesservice.modules.email.model.EmailRequest;
 import com.nuzones.nuzonesservice.modules.email.service.EmailSender;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @author Emmanuel Abajo
  * @created 17/04/2023
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EmailSenderImpl implements EmailSender {
@@ -25,7 +27,7 @@ public class EmailSenderImpl implements EmailSender {
     private String sender;
 
     @Async
-    public boolean sendMail(EmailRequest messageRequest){
+    public void sendMail(EmailRequest messageRequest){
         try {
             var message = javaMailSender.createMimeMessage();
             var helper = new MimeMessageHelper(message, true);
@@ -37,7 +39,7 @@ public class EmailSenderImpl implements EmailSender {
 
             javaMailSender.send(message);
 
-            return true;
+            log.info("Email sent successfully");
         } catch (MessagingException e) {
             throw new MailSendException(e.getMessage());
         }

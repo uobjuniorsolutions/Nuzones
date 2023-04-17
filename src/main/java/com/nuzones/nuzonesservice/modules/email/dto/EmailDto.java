@@ -6,5 +6,5 @@ package com.nuzones.nuzonesservice.modules.email.dto;
  */
 public record EmailDto(
         String type,
-        Object body
+        Object data
 ) {}

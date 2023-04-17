@@ -8,5 +8,5 @@ import com.nuzones.nuzonesservice.modules.email.model.EmailRequest;
  */
 public interface EmailSender {
 
-    boolean sendMail(EmailRequest messageRequest);
+    void sendMail(EmailRequest messageRequest);
 }
