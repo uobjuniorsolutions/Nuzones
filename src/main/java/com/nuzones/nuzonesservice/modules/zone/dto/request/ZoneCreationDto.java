@@ -1,4 +1,4 @@
-package com.nuzones.nuzonesservice.dto.request;
+package com.nuzones.nuzonesservice.modules.zone.dto.request;
 
 /**
  * @author Emmanuel Abajo

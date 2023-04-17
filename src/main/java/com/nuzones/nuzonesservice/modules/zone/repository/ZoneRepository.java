@@ -1,6 +1,6 @@
-package com.nuzones.nuzonesservice.repository;
+package com.nuzones.nuzonesservice.modules.zone.repository;
 
-import com.nuzones.nuzonesservice.entity.Zone;
+import com.nuzones.nuzonesservice.modules.zone.entity.Zone;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

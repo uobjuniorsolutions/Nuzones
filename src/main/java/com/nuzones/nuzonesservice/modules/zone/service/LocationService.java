@@ -1,6 +1,6 @@
-package com.nuzones.nuzonesservice.service;
+package com.nuzones.nuzonesservice.modules.zone.service;
 
-import com.nuzones.nuzonesservice.dto.response.LocationDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.LocationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

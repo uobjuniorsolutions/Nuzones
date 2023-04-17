@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS ZONES (
-    id   SERIAL NOT NULL,
+    id SERIAL NOT NULL,
     latitude DECIMAL(10,4) NOT NULL,
     longitude DECIMAL(10,4) NOT NULL,
     group_link VARCHAR(255) NOT NULL,
