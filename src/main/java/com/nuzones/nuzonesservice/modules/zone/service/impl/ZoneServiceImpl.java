@@ -74,4 +74,37 @@ public class ZoneServiceImpl implements ZoneService {
             return zoneDto;
         }).collect(Collectors.toList());
     }
+
+    @Override
+    public void updateZone(Long id, ZoneCreationDto zoneCreationDto) {
+        var zone = zoneRepository.findByIdAndDeletedFalse(id)
+                .orElseThrow(NotFoundException::new);
+
+        if((zoneCreationDto.description() != null)
+                && !zoneCreationDto.description().isEmpty())
+            zone.setDescription(zoneCreationDto.description());
+
+        if((zoneCreationDto.groupLink() != null)
+                && !zoneCreationDto.groupLink().isEmpty())
+            zone.setGroupLink(zoneCreationDto.groupLink());
+
+        if((zoneCreationDto.title() != null)
+                && !zoneCreationDto.title().isEmpty())
+            zone.setTitle(zoneCreationDto.title());
+
+        if((zoneCreationDto.imageUrl() != null)
+                && !zoneCreationDto.imageUrl().isEmpty())
+            zone.setImageUrl(zoneCreationDto.imageUrl());
+
+        if(zoneCreationDto.latitude() != 0)
+            zone.setLatitude(zoneCreationDto.latitude());
+
+        if(zoneCreationDto.longitude() != 0)
+            zone.setLongitude(zoneCreationDto.longitude());
+
+        if(zoneCreationDto.rating() != 0)
+            zone.setRating(zoneCreationDto.rating());
+
+        zoneRepository.save(zone);
+    }
 }

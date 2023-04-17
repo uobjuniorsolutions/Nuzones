@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/zones/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/v1/zones/**").authenticated()
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/zones/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .headers(headers -> headers.frameOptions().sameOrigin())

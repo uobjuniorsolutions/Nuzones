@@ -49,4 +49,9 @@ public class ZoneController {
     public List<ZoneDto> searchZone(@RequestParam("title") String title) {
         return zoneService.searchZonesByTitle(title);
     }
+
+    @PatchMapping("/{id}")
+    public void updateZone(@PathVariable("id") Long id, @RequestBody ZoneCreationDto zoneCreationDto) {
+        zoneService.updateZone(id, zoneCreationDto);
+    }
 }

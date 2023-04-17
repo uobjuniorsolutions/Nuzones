@@ -23,4 +23,6 @@ public interface ZoneService {
     void removeZoneByID(Long id);
 
     List<ZoneDto> searchZonesByTitle(String name);
+
+    void updateZone(Long id, ZoneCreationDto zoneCreationDto);
 }

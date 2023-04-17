@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ServerErrorException extends RuntimeException {
 
     public ServerErrorException(){
-        super("An error occured while processing request");
+        super("An error occurred while processing request");
     }
 }
