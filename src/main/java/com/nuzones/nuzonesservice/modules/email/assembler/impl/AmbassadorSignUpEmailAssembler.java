@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,12 +23,11 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AmbassadorSignUpEmailAssembler implements EmailRequestAssembler {
 
-    private final SpringTemplateEngine templateEngine;
     private final Validator validator;
     private final ObjectMapper objectMapper;
 
-    @Value("${mail.recipient.email}")
-    private String recipient;
+    @Value("${sendgrid.template.ambassador_signup}")
+    private String templateId;
 
     @Override
     public EmailRequest assemble(Object body) {
@@ -38,19 +35,14 @@ public class AmbassadorSignUpEmailAssembler implements EmailRequestAssembler {
         var request = transformer.transform(body, AmbassadorSignupRequest.class);
         log.info("Assembled request: {}", request);
 
-        Context context = new Context();
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("email", request.getEmail());
-        properties.put("firstname", request.getFirstName());
-        properties.put("lastname", request.getLastName());
-        context.setVariables(properties);
-
-        String template = templateEngine.process("ambassador-signup.html",  context);
+        Map<String, String> dynamicTemplateData = new HashMap<>();
+        dynamicTemplateData.put("email", request.getEmail());
+        dynamicTemplateData.put("firstname", request.getFirstName());
+        dynamicTemplateData.put("lastname", request.getLastName());
 
         return new EmailRequest(
-                recipient,
-                "Ambassador Signup Request",
-                template
+                templateId,
+                dynamicTemplateData
         );
     }
 }
