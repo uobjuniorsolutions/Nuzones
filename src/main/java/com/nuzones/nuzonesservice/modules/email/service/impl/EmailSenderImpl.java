@@ -61,7 +61,7 @@ public class EmailSenderImpl implements EmailSender {
 
     private Mail populateMail(EmailRequest emailRequest) {
         Mail mail = new Mail();
-        mail.setFrom(new Email(sender));
+        mail.setFrom(new Email(sender, "Nuzones"));
         mail.setTemplateId(emailRequest.templateId());
 
         Personalization personalization = new Personalization();

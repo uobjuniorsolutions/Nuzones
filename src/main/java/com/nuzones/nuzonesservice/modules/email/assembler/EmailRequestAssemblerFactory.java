@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class EmailRequestAssemblerFactory {
 
     private final AmbassadorSignUpEmailAssembler ambassadorSignUpEmailAssembler;
+    private final ContactUsEmailAssembler contactUsEmailAssembler;
 
     public EmailRequestAssembler getAssembler(EmailType type) {
         switch (type) {
@@ -22,7 +23,7 @@ public class EmailRequestAssemblerFactory {
                 return ambassadorSignUpEmailAssembler;
             }
             case contact_us -> {
-                return new ContactUsEmailAssembler();
+                return contactUsEmailAssembler;
             }
             default -> {
                 return null;
