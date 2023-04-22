@@ -63,8 +63,7 @@ function Maps() {
   return isLoaded ? (
     <GoogleMap
         mapContainerStyle={containerStyle}
-        // center={center}
-        center={{lat: 20, lng: 31.0844}} //For the current zone!
+        center={center}
         zoom={7}
         onClick={() => handleActiveMarker(null)}
         // onLoad={onLoad}
