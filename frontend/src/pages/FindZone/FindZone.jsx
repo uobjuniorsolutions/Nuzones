@@ -48,8 +48,8 @@ function FindZone() {
             
           </div>
           <div className={styles.buttonRow}>
-            <button className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
             <button className={styles.submit}>Submit</button>
+            <button className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
             {/* Be carefull to, when submitting, get the value of the rating before closing the menu, because closing resets the value */}
           </div>
         </div>
