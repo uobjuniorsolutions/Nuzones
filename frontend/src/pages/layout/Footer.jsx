@@ -15,18 +15,18 @@ function Footer() {
   return (
     <footer>
       <p className='getInTouch'>Get in touch</p>
-      <button className='brand_ambassador' onClick={toggleModal}>Become a Brand Ambassador</button>
+      <button className='brand_ambassador' onClick={toggleModal}>Join the Crew</button>
 
       <BrandAmbassadorModal toggleModal={toggleModal} isModalOpen={isModalOpen}/>
 
       <div className={styles.socialmedia}>
-        <a href='https://www.facebook.com' target="_blank" rel='noreferrer'>
+        <a href='https://www.facebook.com/NuZones' target="_blank" rel='noreferrer'>
           <BsFacebook />
         </a>
-        <a href='https://www.instagram.com' target="_blank" rel='noreferrer'>
+        <a href='https://www.instagram.com/nuzones/' target="_blank" rel='noreferrer'>
           <BsInstagram />
         </a>
-        <a href='https://www.tiktok.com' target="_blank" rel='noreferrer'>
+        <a href='https://www.tiktok.com/@nuzones' target="_blank" rel='noreferrer'>
           <BsTiktok />
         </a>
       </div>

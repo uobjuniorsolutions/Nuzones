@@ -16,10 +16,12 @@ function About() {
         <div className={styles.section} style={{backgroundColor: '#045680'}}>
           <h1 className={styles.sectionTitleWhite}>NuPics</h1>
           <div className={styles.sectionContainer}>
-            <div className={styles.img}>NuPics img</div>
-            <div className={styles.text}>
-              Don't just tell us about your ride, let's see what you have been up to. 
-              Tag us in your content and use the #nupics to be featured on our socials.
+            <div className={styles.image}>
+              <img src='./NuPics.jpg'/>
+            </div>
+            <div className={styles.textBlueSection}>
+              <p>Don't just tell us about your ride, let's see what you have been up to.</p>
+              <p>Tag us in your content and use the #nupics to be featured on our socials.</p>
             </div>
           </div>
         </div>
@@ -27,26 +29,29 @@ function About() {
         <div className={styles.section}>
           <h1 className={styles.sectionTitleBlack}>NuTags</h1>
           <div className={styles.sectionContainer}>
-            <div className={styles.text}>
-              Technology is integrated more and more into our sport. 
-              If you obsess over the post ride analytics or watch those helmet cam runs, 
-              we've got something you will love. NuTags is a unique and competitive way to explore new locations. 
-              Sign up as an ambassador to find out more.
+            <div className={styles.textWhiteSection}>
+              <p>Technology is integrated more and more into our sport.</p> 
+              <p>If you obsess over the post ride analytics or watch those helmet cam runs, we've got something you will love.</p> 
+              <p>NuTags is a unique and competitive way to explore new locations.</p>
+              <p>Sign up as an ambassador to find out more.</p>
             </div>
-            <div className={styles.img}>NuTags img</div>
+            <div className={styles.image}>
+              <img src='./NuTags.jpg'/>
+            </div>
           </div>
         </div>
 
         <div className={styles.section} style={{backgroundColor: '#045680'}}>
           <h1 className={styles.sectionTitleWhite}>NuTunes</h1>
           <div className={styles.sectionContainer}>
-            <div className={styles.img}>NuTunes img</div>
-            <div className={styles.text}>
-              Rock, Drum & Bass, House, the list goes on. 
-              What do you soundtrack your ride with? 
-              Our playlist is updated on a weekly basis through suggestions from the community. 
-              If you fancy adding your favourite tune to our playlist, 
-              drop our socials a follow and let us know.
+          <div className={styles.image}>
+              <img src='./NuTunes.jpg'/>
+            </div>
+            <div className={styles.textBlueSection}>
+              <p>Rock, Drum & Bass, House, the list goes on.</p> 
+              <p>What do you soundtrack your ride with?</p> 
+              <p>Our playlist is updated on a weekly basis through suggestions from the community.</p> 
+              <p>If you fancy adding your favourite tune to our playlist, drop our socials a follow and let us know.</p>
             </div>
           </div>
         </div>
@@ -54,12 +59,14 @@ function About() {
         <div className={styles.section}>
           <h1 className={styles.sectionTitleBlack}>NuDays</h1>
           <div className={styles.sectionContainer}>
-            <div className={styles.text}>
-              What's the point in building a community if we can't also build our sport? 
-              NuDays offers you the opportunity to get involved at your local trail clean, dig day, group ride, and more. 
-              You never know who you will meet there.
+            <div className={styles.textWhiteSection}>
+              <p>What's the point in building a community if we can't also build our sport?</p> 
+              <p>NuDays offers you the opportunity to get involved at your local trail clean, dig day, group ride, and more.</p>
+              <p>You never know who you will meet there.</p>
             </div>
-            <div className={styles.img}>NuDays img</div>
+            <div className={styles.image}>
+              <img src='./NuDays.jpg'/>
+            </div>
           </div>
         </div>
       </div>

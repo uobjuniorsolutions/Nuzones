@@ -52,6 +52,7 @@
 }
 
 .find_crew {
+  text-decoration: none;
   background-color: #FB8500;
   color: white;
   border-style: none;

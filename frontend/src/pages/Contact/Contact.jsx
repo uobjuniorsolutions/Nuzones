@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './Contact.module.css'
 
 function Contact() {
 
-  // Will need to have useState for states of the form
-  // Not responsive! Need to fix that!
+  const firstName = useRef();
+  const lastName = useRef();
+  const email = useRef();
+  const message = useRef();
 
+  const handleFormSubmit = async () => {
+    const requestBody = {
+      type: "contact_us",
+      data: {
+          email: email.current?.value,
+          firstName: firstName.current?.value,
+          lastName: lastName.current?.value,
+          message: message.current?.value
+      }
+  }
+
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(requestBody)
+    };
+
+    const response = await fetch('/api/v1/email', requestOptions);
+
+    console.log(requestOptions.body);
+
+    // Add a way to check if the call was successfull or not (maybe using response code?)
+
+    // Set the form field to blank
+
+    // Toast? or animated button?
+
+  }
+  
   return (
     <div className='content'>
       <p className='title'>Contact us</p>
@@ -15,13 +45,13 @@ function Contact() {
       </div>
       <form>
         <div className={styles.form_row}>
-          <input placeholder='First Name' type="text" />
-          <input placeholder='Last Name' type="text" />
+          <input placeholder='First Name' type='text' ref={firstName} />
+          <input placeholder='Last Name' type='text' ref={lastName} />
         </div>
-        <input placeholder='Email' type='email' />
-        <textarea rows='4' placeholder='Message'/>
+        <input placeholder='Email' type='email' ref={email} />
+        <textarea rows='4' placeholder='Message' ref={message} />
       </form>
-      <button className={styles.submit}>Submit</button>
+      <button className={styles.submit} onClick={handleFormSubmit}>Submit</button>
     </div>
   )
 }
