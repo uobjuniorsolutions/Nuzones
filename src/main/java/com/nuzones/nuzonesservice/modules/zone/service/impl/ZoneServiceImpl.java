@@ -1,12 +1,12 @@
-package com.nuzones.nuzonesservice.service.impl;
+package com.nuzones.nuzonesservice.modules.zone.service.impl;
 
-import com.nuzones.nuzonesservice.dto.request.ZoneCreationDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneCreationResponseDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneDto;
-import com.nuzones.nuzonesservice.entity.Zone;
+import com.nuzones.nuzonesservice.modules.zone.dto.request.ZoneCreationDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneCreationResponseDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneDto;
+import com.nuzones.nuzonesservice.modules.zone.entity.Zone;
 import com.nuzones.nuzonesservice.exception.NotFoundException;
-import com.nuzones.nuzonesservice.repository.ZoneRepository;
-import com.nuzones.nuzonesservice.service.ZoneService;
+import com.nuzones.nuzonesservice.modules.zone.service.ZoneService;
+import com.nuzones.nuzonesservice.modules.zone.repository.ZoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -73,5 +73,38 @@ public class ZoneServiceImpl implements ZoneService {
             BeanUtils.copyProperties(zone, zoneDto);
             return zoneDto;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateZone(Long id, ZoneCreationDto zoneCreationDto) {
+        var zone = zoneRepository.findByIdAndDeletedFalse(id)
+                .orElseThrow(NotFoundException::new);
+
+        if((zoneCreationDto.description() != null)
+                && !zoneCreationDto.description().isEmpty())
+            zone.setDescription(zoneCreationDto.description());
+
+        if((zoneCreationDto.groupLink() != null)
+                && !zoneCreationDto.groupLink().isEmpty())
+            zone.setGroupLink(zoneCreationDto.groupLink());
+
+        if((zoneCreationDto.title() != null)
+                && !zoneCreationDto.title().isEmpty())
+            zone.setTitle(zoneCreationDto.title());
+
+        if((zoneCreationDto.imageUrl() != null)
+                && !zoneCreationDto.imageUrl().isEmpty())
+            zone.setImageUrl(zoneCreationDto.imageUrl());
+
+        if(zoneCreationDto.latitude() != 0)
+            zone.setLatitude(zoneCreationDto.latitude());
+
+        if(zoneCreationDto.longitude() != 0)
+            zone.setLongitude(zoneCreationDto.longitude());
+
+        if(zoneCreationDto.rating() != 0)
+            zone.setRating(zoneCreationDto.rating());
+
+        zoneRepository.save(zone);
     }
 }

@@ -1,8 +1,8 @@
-package com.nuzones.nuzonesservice.service;
+package com.nuzones.nuzonesservice.modules.zone.service;
 
-import com.nuzones.nuzonesservice.dto.request.ZoneCreationDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneCreationResponseDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.request.ZoneCreationDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneCreationResponseDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -23,4 +23,6 @@ public interface ZoneService {
     void removeZoneByID(Long id);
 
     List<ZoneDto> searchZonesByTitle(String name);
+
+    void updateZone(Long id, ZoneCreationDto zoneCreationDto);
 }

@@ -1,9 +1,8 @@
-package com.nuzones.nuzonesservice.service.impl;
+package com.nuzones.nuzonesservice.modules.zone.service.impl;
 
-import com.nuzones.nuzonesservice.dto.response.LocationDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneDto;
-import com.nuzones.nuzonesservice.repository.ZoneRepository;
-import com.nuzones.nuzonesservice.service.LocationService;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.LocationDto;
+import com.nuzones.nuzonesservice.modules.zone.repository.ZoneRepository;
+import com.nuzones.nuzonesservice.modules.zone.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;

@@ -1,4 +1,4 @@
-package com.nuzones.nuzonesservice.dto.response;
+package com.nuzones.nuzonesservice.modules.zone.dto.response;
 
 import lombok.Data;
 
@@ -16,4 +16,5 @@ public class ZoneDto {
     private String imageUrl;
     private String description;
     private int rating;
+    private String exactName;
 }

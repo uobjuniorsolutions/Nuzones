@@ -1,9 +1,9 @@
-package com.nuzones.nuzonesservice.controller;
+package com.nuzones.nuzonesservice.modules.zone.controller;
 
-import com.nuzones.nuzonesservice.dto.request.ZoneCreationDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneCreationResponseDto;
-import com.nuzones.nuzonesservice.dto.response.ZoneDto;
-import com.nuzones.nuzonesservice.service.ZoneService;
+import com.nuzones.nuzonesservice.modules.zone.dto.request.ZoneCreationDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneCreationResponseDto;
+import com.nuzones.nuzonesservice.modules.zone.dto.response.ZoneDto;
+import com.nuzones.nuzonesservice.modules.zone.service.ZoneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,6 @@ import java.util.List;
  * @author Emmanuel Abajo
  * @created 03/04/2023
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/zones")
 @RequiredArgsConstructor
@@ -49,5 +48,10 @@ public class ZoneController {
     @GetMapping("/search")
     public List<ZoneDto> searchZone(@RequestParam("title") String title) {
         return zoneService.searchZonesByTitle(title);
+    }
+
+    @PatchMapping("/{id}")
+    public void updateZone(@PathVariable("id") Long id, @RequestBody ZoneCreationDto zoneCreationDto) {
+        zoneService.updateZone(id, zoneCreationDto);
     }
 }
