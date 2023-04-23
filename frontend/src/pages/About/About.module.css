@@ -77,11 +77,20 @@
         align-items: center;
     }
 
-    .img {
-        width: 80%;
+    .reverse {
+        flex-direction: column-reverse;
+        align-items: center;
     }
 
     .text {
         width: 80%;
+    }
+
+    .image {
+        width: 80%;
+    }
+
+    .textBlueSection, .textWhiteSection {
+        width: 70%;
     }
 }
