@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './FindZone.module.css'
 
 // MUI Rating component import
@@ -19,6 +19,11 @@ function FindZone() {
     setRating(0);
   }
 
+  const location = useRef();
+  const description = useRef();
+
+  // Can I also use a ref for Star Rating?
+
   return (
     <div className='content'>
       <h1 className='title'>Find a Zone</h1>
@@ -33,8 +38,8 @@ function FindZone() {
         {openZone ?
         <div className={styles.openZone}>
           <div className={styles.inputs}>
-            <input placeholder='Type a location'/>
-            <textarea rows={4} placeholder='Description of this location'/>
+            <input placeholder='Type a location' ref={location}/>
+            <textarea rows={4} placeholder='Description of this location' ref={description}/>
             <div className={styles.rating}>
               <p>Rating: </p> 
               <Rating name="rating" value={rating}

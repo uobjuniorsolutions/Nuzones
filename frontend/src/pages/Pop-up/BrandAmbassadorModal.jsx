@@ -19,6 +19,7 @@ function BrandAmbassadorModal(props) {
 
         const requestOptions = {
             method: 'POST',
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(requestBody)
         };
 
@@ -26,7 +27,7 @@ function BrandAmbassadorModal(props) {
 
         // Add a way to check if the call was successfull or not
 
-        console.log(requestOptions.body)
+        console.log(response)
 
         // Before toggling the modal, add animation to the button saying whether or not sent the form
 
