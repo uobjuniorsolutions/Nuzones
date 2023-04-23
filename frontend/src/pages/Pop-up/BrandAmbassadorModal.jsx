@@ -23,17 +23,24 @@ function BrandAmbassadorModal(props) {
             body: JSON.stringify(requestBody)
         };
 
-        const response = await fetch('/api/v1/email', requestOptions);
-
-        // Add a way to check if the call was successfull or not
-
-        console.log(response)
+        try {
+            const response = await fetch('/api/v1/email', requestOptions);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+              console.log("The email was successfully sent!")
+            }
+      
+        } catch (error) {
+        console.log("Error:", error);
+        }
+      
+        // Set the form field to blank
+        document.getElementById('contactModal').reset();
 
         // Before toggling the modal, add animation to the button saying whether or not sent the form
 
         //Then, toggle the modal
-        
-        toggleModal();
     }
 
     const firstName = useRef()
@@ -66,7 +73,7 @@ function BrandAmbassadorModal(props) {
             <div className={styles.modal}>
                 <h1 className={styles.title}>Want to become part of the crew?</h1>
                 <p className={styles.subtitle}>Fill the form below and we will reach out as soon as possible!</p>
-                <form className={styles.form}>
+                <form id='contactModal' className={styles.form}>
                     <div className={styles.form_row}>
                         <input placeholder='First name' ref={firstName}/>
                         <input placeholder='Last name'ref={lastName}/>
@@ -75,7 +82,7 @@ function BrandAmbassadorModal(props) {
                 </form>
                 <div className={styles.button_row}>
                     <button className={styles.submit} onClick={sendAmbassadorEmail}>Submit</button>
-                    <button className={styles.cancel} onClick={toggleModal}>Cancel</button>
+                    <button className={styles.cancel} onClick={toggleModal}>Close</button>
                 </div>
             </div>
 
