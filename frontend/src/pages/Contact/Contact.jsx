@@ -9,6 +9,7 @@ function Contact() {
   const message = useRef();
 
   const handleFormSubmit = async () => {
+
     const requestBody = {
       type: "contact_us",
       data: {
@@ -17,21 +18,28 @@ function Contact() {
           lastName: lastName.current?.value,
           message: message.current?.value
       }
-  }
+    }
 
     const requestOptions = {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(requestBody)
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(requestBody)
     };
 
-    const response = await fetch('/api/v1/email', requestOptions);
+    try {
+      const response = await fetch('/api/v1/email', requestOptions);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
+        console.log("The email was successfully sent!")
+      }
 
-    console.log(response);
-
-    // Add a way to check if the call was successfull or not (maybe using response code?)
+    } catch (error) {
+      console.log("Error:", error);
+    }
 
     // Set the form field to blank
+    document.getElementById('contactForm').reset();
 
     // Toast? or animated button?
 
@@ -44,7 +52,7 @@ function Contact() {
         <p>For any queries about NuZones, our operations, future plans, etc.</p>
         <p>Let us know by filling out the contact from down below.</p>
       </div>
-      <form>
+      <form id='contactForm'>
         <div className={styles.form_row}>
           <input placeholder='First Name' type='text' ref={firstName} />
           <input placeholder='Last Name' type='text' ref={lastName} />
