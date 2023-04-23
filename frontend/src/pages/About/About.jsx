@@ -28,7 +28,7 @@ function About() {
 
         <div className={styles.section}>
           <h1 className={styles.sectionTitleBlack}>NuTags</h1>
-          <div className={styles.sectionContainer}>
+          <div className={`${styles.sectionContainer} ${styles.reverse}`}>
             <div className={styles.textWhiteSection}>
               <p>Technology is integrated more and more into our sport.</p> 
               <p>If you obsess over the post ride analytics or watch those helmet cam runs, we've got something you will love.</p> 
@@ -58,7 +58,7 @@ function About() {
 
         <div className={styles.section}>
           <h1 className={styles.sectionTitleBlack}>NuDays</h1>
-          <div className={styles.sectionContainer}>
+          <div className={`${styles.sectionContainer} ${styles.reverse}`}>
             <div className={styles.textWhiteSection}>
               <p>What's the point in building a community if we can't also build our sport?</p> 
               <p>NuDays offers you the opportunity to get involved at your local trail clean, dig day, group ride, and more.</p>
