@@ -5,5 +5,5 @@ package com.nuzones.nuzonesservice.modules.email.enums;
  * @created 17/04/2023
  */
 public enum EmailType {
-    ambassador_sign_up, contact_us
+    ambassador_sign_up, contact_us, add_new_zone
 }

@@ -2,6 +2,7 @@ package com.nuzones.nuzonesservice.modules.email.assembler;
 
 import com.nuzones.nuzonesservice.modules.email.assembler.impl.AmbassadorSignUpEmailAssembler;
 import com.nuzones.nuzonesservice.modules.email.assembler.impl.ContactUsEmailAssembler;
+import com.nuzones.nuzonesservice.modules.email.assembler.impl.NewZoneEmailAssembler;
 import com.nuzones.nuzonesservice.modules.email.enums.EmailType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ public class EmailRequestAssemblerFactory {
 
     private final AmbassadorSignUpEmailAssembler ambassadorSignUpEmailAssembler;
     private final ContactUsEmailAssembler contactUsEmailAssembler;
+    private final NewZoneEmailAssembler newZoneEmailAssembler;
 
     public EmailRequestAssembler getAssembler(EmailType type) {
         switch (type) {
@@ -24,6 +26,9 @@ public class EmailRequestAssemblerFactory {
             }
             case contact_us -> {
                 return contactUsEmailAssembler;
+            }
+            case add_new_zone -> {
+                return newZoneEmailAssembler;
             }
             default -> {
                 return null;
