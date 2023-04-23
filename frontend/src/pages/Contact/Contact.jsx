@@ -21,12 +21,13 @@ function Contact() {
 
     const requestOptions = {
         method: 'POST',
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(requestBody)
     };
 
     const response = await fetch('/api/v1/email', requestOptions);
 
-    console.log(requestOptions.body);
+    console.log(response);
 
     // Add a way to check if the call was successfull or not (maybe using response code?)
 
