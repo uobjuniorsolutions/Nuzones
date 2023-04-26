@@ -17,7 +17,8 @@ function Home() {
   return (
     <div className={styles.content}>
 
-      <div style={{backgroundImage: 'url(./mainImage1.jpg)'}} className={styles.adventures}>
+      {/* <div style={{backgroundImage: 'url(./mainImage1.jpg)'}} className={styles.adventures}> */}
+      <div style={{backgroundImage: 'url(https://res.cloudinary.com/dpryg3lq9/image/upload/v1682326247/Main_Image_o2zyep.jpg)'}} className={styles.adventures}>
         <p className={styles.heroTitle}>Discover NuZones</p>
         <div className={styles.bottomContainer}>
           <div className={styles.description}>
