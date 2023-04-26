@@ -44,6 +44,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/zones/**").authenticated()
                         .anyRequest().permitAll()
                 )
+                .formLogin().disable()
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .csrf().disable()
                 .sessionManagement()
