@@ -117,8 +117,8 @@ function FindZone() {
   }
 
   useEffect(() => {
-    // getZones();
-    setZones(tempZones);
+    getZones();
+    // setZones(tempZones);
   }, []);
 
   return (
