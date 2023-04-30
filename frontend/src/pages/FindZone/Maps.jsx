@@ -16,10 +16,16 @@ const center = {
     lng: -1.389
 }
 
-function Maps({ zones }) {
+function Maps({ zones, searchedZone }) {
 
   const [map, setMap] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
+
+  useEffect(() => {
+    if (searchedZone) {
+      handleActiveMarker(searchedZone.id);
+    }
+  }, [searchedZone]);
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4"

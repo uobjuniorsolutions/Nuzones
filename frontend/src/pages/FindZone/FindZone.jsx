@@ -29,6 +29,16 @@ function FindZone() {
   const location = useRef();
   const description = useRef();
 
+  const [searchQuery, setSearchQuery] = useState(null);
+
+  // const [open, setOpen] = useState(false);
+  // const [inputValue, setInputValue] = useState("");
+
+  // useEffect(() => {
+  //   console.log("Value of open: ", open);
+  //   console.log("Value of inputValue: ", inputValue);
+  // }, [open, inputValue]);
+
   // Can I also use a ref for Star Rating?
 
   const tempZones = [
@@ -114,31 +124,45 @@ function FindZone() {
   return (
     <div className='content'>
       <h1 className='title'>Find a Zone</h1>
-      {/* <input className={styles.search} placeholder="Search"/> */}
-      {/* <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        sx={{width: '90%'}}
-        options={zones.map((zone) => zone.title)}
-        renderInput={(params) => 
-          <TextField {...params} placeholder='Search' />
-        }
-      /> */}
       <Autocomplete
         componentsProps={{
           paper: {
             sx: {
               marginTop: '10px',
-              borderRadius: '0.8rem'
-              // border: '2px solid red',
+              borderRadius: '0.8rem',
+              maxHeight: '150px'
             },
             elevation: 5,
           }
         }}
         freeSolo={true}
-        clearIcon={<ClearIcon fontSize="inherit" />}
+        // clearIcon={<ClearIcon fontSize="inherit" />}
+        disableClearable
         sx={{ width: '90%' }}
         options={zones.map((zone) => zone.title)}
+        onInputChange={(event, newValue) => {
+          const searchZone = zones.find(zone => zone.title === newValue);
+          if (searchZone) {
+            setSearchQuery(searchZone);
+          }
+        }}
+        // open={open}
+        // onOpen={() => {
+        //   // only open when in focus and inputValue is not empty
+        //   if (inputValue) {
+        //     setOpen(true);
+        //   }
+        // }}
+        // onClose={() => setOpen(false)}
+        // inputValue={inputValue}
+        // onInputChange={(e, value, reason) => {
+        //   setInputValue(value);
+
+        //   // only open when inputValue is not empty after the user typed something
+        //   if (!value) {
+        //     setOpen(false);
+        //   }
+        // }}
         renderInput={(renderInputParams) => (
           <div ref={renderInputParams.InputProps.ref}
             style={{
@@ -170,7 +194,7 @@ function FindZone() {
                   paddingLeft: "10px",
                   paddingRight: 0,
                   background: "white",
-                }
+                },
               }}
               InputProps={{
                 ...renderInputParams.InputProps, startAdornment: (<InputAdornment position='start'> <Search /> </InputAdornment>),
@@ -183,7 +207,7 @@ function FindZone() {
         )}
       />
       <div className={styles.map}>
-        <Maps zones={zones}/>
+        <Maps zones={zones} searchedZone={searchQuery}/>
       </div>
       <div className={styles.missZone}>
         <h2>Have we missed a zone?</h2>
