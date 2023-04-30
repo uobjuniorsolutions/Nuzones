@@ -16,7 +16,7 @@ Need to tidy up a bit to see what's common among all those sections
 .adventures {
     height: calc(100vh - 78.5px);
     width: 100%;
-    background-image: url('./mainImageDesktop.jpg');
+    background-image: url('../mainImageDesktop.jpg');
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
@@ -392,7 +392,7 @@ button a {
 
 @media screen and (max-width: 832px) {
     .adventures {
-        background-image: url('./mainImagePhone.jpg');
+        background-image: url('../mainImagePhone.jpg');
         height: calc(100vh - 52.5px);
     }
 }
