@@ -17,8 +17,8 @@ function Home() {
   return (
     <div className={styles.content}>
 
-      {/* <div style={{backgroundImage: 'url(./mainImage1.jpg)'}} className={styles.adventures}> */}
-      <div style={{backgroundImage: 'url(https://res.cloudinary.com/dpryg3lq9/image/upload/v1682326247/Main_Image_o2zyep.jpg)'}} className={styles.adventures}>
+      <div className={styles.adventures}>
+      {/* <div style={{backgroundImage: 'url(https://res.cloudinary.com/dpryg3lq9/image/upload/v1682326247/Main_Image_o2zyep.jpg)'}} className={styles.adventures}> */}
         <p className={styles.heroTitle}>Discover NuZones</p>
         <div className={styles.bottomContainer}>
           <div className={styles.description}>
@@ -36,7 +36,7 @@ function Home() {
         </div>
       </div>
 
-      <div className={styles.videoContainer}>
+      {/* <div className={styles.videoContainer}>
         <div className={styles.video}> Video </div>
         <div className={styles.videoText}>
           <p>Intro text for the promo video</p>
@@ -44,7 +44,7 @@ function Home() {
             <Link to='/zone'>Find a Zone</Link>
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.sponsors}>
         <h1>Thoughts about NuZones</h1>
@@ -59,7 +59,7 @@ function Home() {
             <p>"As a professional cyclist I ride across the globe. NuZones is great, it helps me connect with new riders to explore brand new zones"</p>
           </div>
           <div className={styles.sponsorsElement}>
-            <img src='./mudhuggerLogo2.jpg' />
+            <img src='./mudhuggerLogo.jpg' />
             <div className={styles.nameAndSubheading}>
               <h2>Mudhugger</h2>
               <h3>Industry Representative</h3>
