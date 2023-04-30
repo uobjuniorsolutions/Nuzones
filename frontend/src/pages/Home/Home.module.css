@@ -10,14 +10,13 @@ Need to tidy up a bit to see what's common among all those sections
     flex-direction: column;
     align-items: center;
     margin: 0;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 .adventures {
-    /* height: calc(100vh - 8vh); */
-    /* height: 100vh; */
-    height: 35rem;
+    height: calc(100vh - 78.5px);
     width: 100%;
+    background-image: url('../mainImageDesktop.jpg');
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
@@ -391,8 +390,14 @@ button a {
 
 }
 
-@media screen and (max-width: 551px) {
+@media screen and (max-width: 832px) {
+    .adventures {
+        background-image: url('../mainImagePhone.jpg');
+        height: calc(100vh - 52.5px);
+    }
+}
 
+@media screen and (max-width: 551px) {
     .adventures {
         gap: 1rem;
     }
