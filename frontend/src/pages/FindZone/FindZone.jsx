@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import styles from './FindZone.module.css'
 
 // MUI Rating component import
-import { Rating, Stack } from '@mui/material'; 
+import { Rating, Stack, Box } from '@mui/material'; 
 import StarIcon from '@mui/icons-material/Star';
 import Search from '@mui/icons-material/Search';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
@@ -14,10 +14,31 @@ import ClearIcon from '@mui/icons-material/Clear';
 // Google Maps import
 import Maps from './Maps';
 
+// react google maps API
+import { useJsApiLoader } from '@react-google-maps/api';
+
+// react google places autocomplete
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+
+// labels for hover rating
+const labels = {
+  1: 'Beginner',
+  2: 'Easy',
+  3: 'Normal',
+  4: 'Hard',
+  5: 'Very hard',
+};
+
 function FindZone() {
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4",
+    libraries: ['places']
+  })
 
   const [openZone, setOpenZone] = useState(false);
   const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(-1);
 
   const [zones, setZones] = useState([]);
 
@@ -111,14 +132,19 @@ function FindZone() {
   ]
 
   const getZones = async () => {
-    let response = await fetch('/api/v1/zones?page=0&size=1000')
-    let data = await response.json()
-    setZones(data.content)
+    try {
+      let response = await fetch('/api/v1/zones?page=0&size=1000')
+      let data = await response.json()
+      setZones(data.content)
+    } catch (err) {
+      console.error(err);
+      console.log("setting zones to tempZones for dev");
+      setZones(tempZones);
+    }
   }
 
   useEffect(() => {
     getZones();
-    // setZones(tempZones);
   }, []);
 
   return (
@@ -130,7 +156,6 @@ function FindZone() {
             sx: {
               marginTop: '10px',
               borderRadius: '0.8rem',
-              maxHeight: '150px'
             },
             elevation: 5,
           }
@@ -207,7 +232,7 @@ function FindZone() {
         )}
       />
       <div className={styles.map}>
-        <Maps zones={zones} searchedZone={searchQuery}/>
+        <Maps zones={zones} searchedZone={searchQuery} isLoaded={isLoaded}/>
       </div>
       <div className={styles.missZone}>
         <h2>Have we missed a zone?</h2>
@@ -216,17 +241,33 @@ function FindZone() {
         {openZone ?
         <div className={styles.openZone}>
           <div className={styles.inputs}>
-            <input placeholder='Type a location' ref={location}/>
+            {/* <input placeholder='Type a location' ref={location}/> */}
+            <GooglePlacesAutocomplete />
             <textarea rows={4} placeholder='Description of this location' ref={description}/>
             <div className={styles.rating}>
-              <p>Rating: </p> 
-              <Rating name="rating" value={rating}
-                icon = {<StarIcon style={{width:"2rem",height:"2rem"}}></StarIcon>}
-                emptyIcon = {<StarOutlineIcon style={{width:"2rem",height:"2rem"}}></StarOutlineIcon>}
-                onChange={(event, newRating) => {
-                  setRating(newRating);
-                }} 
-              />
+              <p>How difficult is this zone?</p>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Rating name="rating" value={rating}
+                  icon = {<StarIcon style={{width:"2rem",height:"2rem"}}></StarIcon>}
+                  emptyIcon = {<StarOutlineIcon style={{width:"2rem",height:"2rem"}}></StarOutlineIcon>}
+                  onChangeActive={(event, newHover) => {
+                    setHover(newHover);
+                  }}
+                  onChange={(event, newRating) => {
+                    setRating(newRating);
+                  }} 
+                />
+                {rating !== null && (
+                  <div style={{ marginLeft: '0.5rem', display: 'flex', flexGrow: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <p>{labels[hover !== -1 ? hover : rating]}</p>
+                  </div>
+                )}
+              </Box>
             </div>
             
           </div>

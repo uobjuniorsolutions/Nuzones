@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindowF } from '@react-google-maps/api';
 
 // Styles import
 import styles from './Maps.module.css'
@@ -16,7 +16,7 @@ const center = {
     lng: -1.389
 }
 
-function Maps({ zones, searchedZone }) {
+function Maps({ zones, searchedZone, isLoaded }) {
 
   const [map, setMap] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -26,10 +26,6 @@ function Maps({ zones, searchedZone }) {
       handleActiveMarker(searchedZone.id);
     }
   }, [searchedZone]);
-
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4"
-  })
 
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
@@ -105,7 +101,10 @@ function Maps({ zones, searchedZone }) {
                       <div style={{display: 'flex', flexDirection: 'column', gap: '0.25rem'}}>
                         <h1>{zone.title}</h1>
                         <h2 className={styles.coordinates} style={{fontFamily: 'monospace'}}>{zone.latitude}, {zone.longitude}</h2>
-                        <Rating name="rating" value={zone.rating} readOnly />
+                        <div style={{ display: 'flex', flexDirection: 'row', gap: '0.25rem'}}>
+                          <h2 className={styles.coordinates}>Difficulty: </h2>
+                          <Rating name="rating" value={zone.rating} readOnly />
+                        </div>
                       </div>
                       <p className={styles.description}>{zone.description}</p>
                       <button>
