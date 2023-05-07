@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { GoogleMap, useJsApiLoader, Marker, InfoWindowF } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindowF } from '@react-google-maps/api';
 
 // Styles import
 import styles from './Maps.module.css'
@@ -16,7 +16,7 @@ const center = {
     lng: -1.389
 }
 
-function Maps({ zones, searchedZone }) {
+function Maps({ zones, searchedZone, isLoaded }) {
 
   const [map, setMap] = useState(null);
   const [activeMarker, setActiveMarker] = useState(null);
@@ -26,10 +26,6 @@ function Maps({ zones, searchedZone }) {
       handleActiveMarker(searchedZone.id);
     }
   }, [searchedZone]);
-
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4"
-  })
 
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {

@@ -14,6 +14,12 @@ import ClearIcon from '@mui/icons-material/Clear';
 // Google Maps import
 import Maps from './Maps';
 
+// react google maps API
+import { useJsApiLoader } from '@react-google-maps/api';
+
+// react google places autocomplete
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+
 // labels for hover rating
 const labels = {
   1: 'Beginner',
@@ -24,6 +30,11 @@ const labels = {
 };
 
 function FindZone() {
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4",
+    libraries: ['places']
+  })
 
   const [openZone, setOpenZone] = useState(false);
   const [rating, setRating] = useState(0);
@@ -221,7 +232,7 @@ function FindZone() {
         )}
       />
       <div className={styles.map}>
-        <Maps zones={zones} searchedZone={searchQuery}/>
+        <Maps zones={zones} searchedZone={searchQuery} isLoaded={isLoaded}/>
       </div>
       <div className={styles.missZone}>
         <h2>Have we missed a zone?</h2>
@@ -230,7 +241,8 @@ function FindZone() {
         {openZone ?
         <div className={styles.openZone}>
           <div className={styles.inputs}>
-            <input placeholder='Type a location' ref={location}/>
+            {/* <input placeholder='Type a location' ref={location}/> */}
+            <GooglePlacesAutocomplete />
             <textarea rows={4} placeholder='Description of this location' ref={description}/>
             <div className={styles.rating}>
               <p>How difficult is this zone?</p>
