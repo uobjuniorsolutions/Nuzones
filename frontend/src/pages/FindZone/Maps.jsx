@@ -105,7 +105,10 @@ function Maps({ zones, searchedZone }) {
                       <div style={{display: 'flex', flexDirection: 'column', gap: '0.25rem'}}>
                         <h1>{zone.title}</h1>
                         <h2 className={styles.coordinates} style={{fontFamily: 'monospace'}}>{zone.latitude}, {zone.longitude}</h2>
-                        <Rating name="rating" value={zone.rating} readOnly />
+                        <div style={{ display: 'flex', flexDirection: 'row', gap: '0.25rem'}}>
+                          <h2 className={styles.coordinates}>Difficulty: </h2>
+                          <Rating name="rating" value={zone.rating} readOnly />
+                        </div>
                       </div>
                       <p className={styles.description}>{zone.description}</p>
                       <button>
