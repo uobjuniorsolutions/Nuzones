@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import styles from './FindZone.module.css'
 
 // MUI Rating component import
-import { Rating, Stack, Box } from '@mui/material'; 
+import { Rating, Stack, Box, Tooltip, IconButton } from '@mui/material'; 
 import StarIcon from '@mui/icons-material/Star';
 import Search from '@mui/icons-material/Search';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
@@ -10,6 +10,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import HelpIcon from '@mui/icons-material/Help'
 
 // Google Maps import
 import Maps from './Maps';
@@ -242,10 +243,27 @@ function FindZone() {
         <div className={styles.openZone}>
           <div className={styles.inputs}>
             {/* <input placeholder='Type a location' ref={location}/> */}
-            <GooglePlacesAutocomplete />
+            <GooglePlacesAutocomplete 
+              minLengthAutocomplete={2}
+            />
+            {/* <GooglePlacesAutocomplete
+              selectProps={{
+                placeholder: 'Type a location',
+              }}
+            /> */}
             <textarea rows={4} placeholder='Description of this location' ref={description}/>
             <div className={styles.rating}>
-              <p>How difficult is this zone?</p>
+              <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', alignItems: 'center'}}>
+                <p>How difficult is this zone?</p>
+                <Tooltip title="Insert informations on how to rate the difficulty of a zone" 
+                  placement='top' 
+                  enterTouchDelay={0}
+                >
+                  <IconButton>
+                    <HelpIcon sx={{ fontSize: '1.25rem' }}/>
+                  </IconButton>
+                </Tooltip>
+              </div>
               <Box
                 sx={{
                   display: 'flex',
