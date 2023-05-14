@@ -76,6 +76,28 @@ function FindZone() {
       exactName: "Cannock Chase MTB Riders"
     },
     {
+      id:	230,
+      latitude:	52.2196,
+      longitude:	-0.8835,
+      title:	"Northampton",
+      groupLink:	"https://www.facebook.com/groups/623487016282351",
+      imageUrl:	"https://res.cloudinary.com/dpryg3lq9/image/upload/v1683969409/Northampton.jpg",
+      description:	"A former golf course transformed into something much better. Green up to black runs available for you daring lot.",
+      rating:	2,
+      exactName:	"NuZones - Northampton Bike Park Riders"
+    },
+    {
+      id:	233,
+      latitude:	52.3769,
+      longitude:	-2.0037,
+      title:	"Lickey Hills & Clent",
+      groupLink:	"https://www.facebook.com/groups/221484700401949",
+      imageUrl:	"https://res.cloudinary.com/dpryg3lq9/image/upload/v1683969407/Lickey_Hills_Clent.jpg",
+      description:	"Short punchy descents littered with steep shutes by the side of a picturesque golf course, Birmingham has trails? Yes it does!",
+      rating:	2,
+      exactName:	"NuZones - Lickey & Clent Hills Riders"
+    },
+    {
       id: 194,
       latitude: 51.8397,
       longitude: -2.1147,
