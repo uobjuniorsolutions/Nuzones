@@ -111,7 +111,9 @@ function Maps({ zones, searchedZone, isLoaded }) {
                         <a href={zone.groupLink} target='_blank' style={{textDecoration: 'none', color: 'inherit'}}>Go to community</a>
                       </button>
                     </div>
-                    <img className={styles.image} src={zone.imageUrl} />
+                    <div className={styles.imageContainer}>
+                      <img className={styles.image} src={zone.imageUrl} />
+                    </div>
                   </div>
                 </InfoWindowF>
               ) : null}
