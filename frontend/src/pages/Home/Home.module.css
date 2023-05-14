@@ -133,10 +133,10 @@ button a {
 }
 
 .sponsorsPics {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
-    /* justify-content: space-evenly; */
+    justify-content: center;
     align-items: stretch;
 }
 
@@ -253,7 +253,7 @@ button a {
 .valuesContainer {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 .valuesElement {
