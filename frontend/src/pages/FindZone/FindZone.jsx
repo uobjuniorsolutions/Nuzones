@@ -70,7 +70,7 @@ function FindZone() {
       longitude: -1.973,
       title: "Cannock Chase",
       groupLink: "https://www.facebook.com/groups/1669929603286380",
-      imageUrl: "https://awscdn.com/image_1",
+      imageUrl: "https://res.cloudinary.com/dpryg3lq9/image/upload/v1683969399/Cannock_Chase_Img.jpg",
       description: "Just north of Brum lies Cannock Chase. Mixture of trail centre routes, Dh tracks, & off piste goodness.",
       rating: 3,
       exactName: "Cannock Chase MTB Riders"

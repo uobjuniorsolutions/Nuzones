@@ -20,8 +20,21 @@ function About() {
               <img src='./NuPics.jpg'/>
             </div>
             <div className={styles.textBlueSection}>
-              <p>Don't just tell us about your ride, let's see what you have been up to.</p>
-              <p>Tag us in your content and use the #nupics to be featured on our socials.</p>
+              <h2>Outdoor adventures are meant to be shared with others.</h2>
+              <div className={styles.nupicsList}>
+                <div className={styles.nupicsListItem}>
+                  <h3>1.</h3>
+                  <p>Take a pic or a video of a moment you want to share.</p>
+                </div>
+                <div className={styles.nupicsListItem}>
+                  <h3>2.</h3>
+                  <p>Tag us and use the #nupics.</p>
+                </div>
+                <div className={styles.nupicsListItem}>
+                  <h3>3.</h3>
+                  <p>Publish to appear on our socials!</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -30,10 +43,18 @@ function About() {
           <h1 className={styles.sectionTitleBlack}>NuTags</h1>
           <div className={`${styles.sectionContainer} ${styles.reverse}`}>
             <div className={styles.textWhiteSection}>
-              <p>Technology is integrated more and more into our sport.</p> 
-              <p>If you obsess over the post ride analytics or watch those helmet cam runs, we've got something you will love.</p> 
-              <p>NuTags is a unique and competitive way to explore new locations.</p>
-              <p>Sign up as an ambassador to find out more.</p>
+              <div className={styles.nutagsListElem}>
+                <div className={styles.square}></div>
+                <p>NuTags is a unique and competitive way to explore new locations!</p>
+              </div>
+              <div className={styles.nutagsListElem}>
+                <p>We are constantly setting up Tags for you to scan around tracks.</p>
+                <div className={styles.square}></div>
+              </div>
+              <div className={styles.nutagsListElem}>
+                <div className={styles.square}></div>
+                <p>Scan all Tags from a track and compete with others on duration!</p>
+              </div>
             </div>
             <div className={styles.image}>
               <img src='./NuTags.jpg'/>
@@ -44,14 +65,28 @@ function About() {
         <div className={styles.section} style={{backgroundColor: '#045680'}}>
           <h1 className={styles.sectionTitleWhite}>NuTunes</h1>
           <div className={styles.sectionContainer}>
-          <div className={styles.image}>
+            <div className={styles.image}>
               <img src='./NuTunes.jpg'/>
             </div>
             <div className={styles.textBlueSection}>
-              <p>Rock, Drum & Bass, House, the list goes on.</p> 
-              <p>What do you soundtrack your ride with?</p> 
-              <p>Our playlist is updated on a weekly basis through suggestions from the community.</p> 
-              <p>If you fancy adding your favourite tune to our playlist, drop our socials a follow and let us know.</p>
+              <h2>Rock, Drum & Bass, House, the list goes on.</h2> 
+              <div className={styles.nupicsList}>
+                <div className={styles.nupicsListItem}>
+                  <div className={styles.circle}></div>
+                  <p>Ride and explore with the best soundtrack.</p>
+                </div>
+                <div className={styles.nupicsListItem}>
+                  <div className={styles.circle}></div>
+                  <p>Weekly updated playlist through community suggestions.</p>
+                </div>
+                <div className={styles.nupicsListItem}>
+                  <div className={styles.circle}></div>
+                  <p>Drop our socials a follow and let us know which track we can add!</p>
+                </div>
+              </div>
+              <div className={styles.buttonNutunes}>
+                <button>Go to playlist</button>
+              </div>
             </div>
           </div>
         </div>
@@ -60,9 +95,12 @@ function About() {
           <h1 className={styles.sectionTitleBlack}>NuDays</h1>
           <div className={`${styles.sectionContainer} ${styles.reverse}`}>
             <div className={styles.textWhiteSection}>
-              <p>What's the point in building a community if we can't also build our sport?</p> 
-              <p>NuDays offers you the opportunity to get involved at your local trail clean, dig day, group ride, and more.</p>
-              <p>You never know who you will meet there.</p>
+              <div className={styles.nudaysContainer}>
+                <p>What's the point in building a community if we can't also build our sport?</p> 
+                <p>NuDays offers you the opportunity to get involved at your local trail clean, dig day, group ride, and more.</p>
+                <p>You never know who you will meet there.</p>
+              </div>
+              <h2 style={{ fontWeight: 500 }}>Coming soon...</h2>
             </div>
             <div className={styles.image}>
               <img src='./NuDays.jpg'/>
