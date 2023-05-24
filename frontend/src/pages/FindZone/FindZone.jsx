@@ -2,14 +2,16 @@ import React, { useRef, useState, useEffect } from 'react'
 import styles from './FindZone.module.css'
 
 // MUI Rating component import
-import { Rating, Stack, Box, Tooltip, IconButton } from '@mui/material'; 
+import IconButton from '@mui/material/IconButton';
+import Rating from '@mui/material/Rating';
+import InputAdornment from '@mui/material/InputAdornment';
+import Tooltip from '@mui/material/Tooltip';
+import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star';
 import Search from '@mui/icons-material/Search';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
 import HelpIcon from '@mui/icons-material/Help'
 
 // Google Maps import
@@ -23,11 +25,11 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 // labels for hover rating
 const labels = {
-  1: 'Beginner',
-  2: 'Easy',
-  3: 'Normal',
-  4: 'Hard',
-  5: 'Very hard',
+  1: "Nice & Chill",
+  2: "Add smiles there",
+  3: "It's getting fruty",
+  4: "Ok ok, letsavew",
+  5: "Pure madness",
 };
 
 function FindZone() {
@@ -277,7 +279,19 @@ function FindZone() {
             <div className={styles.rating}>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', alignItems: 'center'}}>
                 <p>How difficult is this zone?</p>
-                <Tooltip title="Insert informations on how to rate the difficulty of a zone" 
+                <Tooltip 
+                  title={
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                      <p style={{ fontSize: '0.9rem' }}>How to rate the difficulty of a zone?</p>
+                      <ul style={{ paddingLeft: '0.5rem' }}>
+                        <li style={{ fontSize: '0.7rem' }}>1 star - Expect fun flowy tracks similar to a green</li>
+                        <li style={{ fontSize: '0.7rem' }}>2 stars - Trails with small features to make ya smile</li>
+                        <li style={{ fontSize: '0.7rem' }}>3 stars - Natural goodness imagine blue/red</li>
+                        <li style={{ fontSize: '0.7rem' }}>4 stars - Ramping it up now, be prepared</li>
+                        <li style={{ fontSize: '0.7rem' }}>5 stars - Pro lines, are you ready?</li>
+                      </ul>
+                    </div>
+                  }
                   placement='top' 
                   enterTouchDelay={0}
                 >

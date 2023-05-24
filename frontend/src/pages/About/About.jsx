@@ -6,8 +6,9 @@ function About() {
     <div className='content'>
       <h1 className='title'>What's in the NuZones family</h1>
       <div className='description'>
-        <p>Text that explains what's going to come in the NuZones family.</p>
-        <p>Tell people that they can expect those to roll out in the following months.</p>
+        <p>An adventure is much more than who you went with.</p>
+        <p>Its what tune you had on, crazy videos, and exploring new zones.</p>
+        <p>Whatever you're into the NuZones family can help!</p>
       </div>
 
       {/* Fix the pb with img not same size when I'll have the img */}
@@ -85,7 +86,9 @@ function About() {
                 </div>
               </div>
               <div className={styles.buttonNutunes}>
-                <button>Go to playlist</button>
+                <button>
+                  <a href='https://open.spotify.com/user/31o4crzycczfnzo6orfgs5o5pvba?si=C47mw-4ES5SoQNC6Enq5wg' target='_blank'>Go to playlist</a>
+                </button>
               </div>
             </div>
           </div>
