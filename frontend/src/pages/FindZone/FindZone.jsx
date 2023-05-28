@@ -2,15 +2,22 @@ import React, { useRef, useState, useEffect } from 'react'
 import styles from './FindZone.module.css'
 
 // MUI Rating component import
-import { Rating, Stack, Box, Tooltip, IconButton } from '@mui/material'; 
+import IconButton from '@mui/material/IconButton';
+import Rating from '@mui/material/Rating';
+import InputAdornment from '@mui/material/InputAdornment';
+import Tooltip from '@mui/material/Tooltip';
+import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star';
 import Search from '@mui/icons-material/Search';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
 import HelpIcon from '@mui/icons-material/Help'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 // Google Maps import
 import Maps from './Maps';
@@ -23,11 +30,11 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 // labels for hover rating
 const labels = {
-  1: 'Beginner',
-  2: 'Easy',
-  3: 'Normal',
-  4: 'Hard',
-  5: 'Very hard',
+  1: "Nice & Chill",
+  2: "Add smiles there",
+  3: "It's getting fruty",
+  4: "Ok ok, letsavew",
+  5: "Pure madness",
 };
 
 function FindZone() {
@@ -154,6 +161,30 @@ function FindZone() {
     }
   ]
 
+  const style = {
+    control: base => ({
+      ...base,
+      border: '2px solid #e3e3e3',  
+      borderRadius: '10px',
+      boxShadow: 'none',
+      padding: '0.3rem 0',
+      fontWeight: '400',
+      "&:hover": {
+        borderColor: "#e3e3e3",
+      },
+    }),
+    singleValue: (base) => ({
+      ...base,
+      whiteSpace: 'normal'
+    }),
+  };
+
+  const disableIndicators = {
+    LoadingIndicator:() => null,
+    DropdownIndicator:() => null, 
+    IndicatorSeparator:() => null
+  }
+
   const getZones = async () => {
     try {
       let response = await fetch('/api/v1/zones?page=0&size=1000')
@@ -181,7 +212,7 @@ function FindZone() {
               borderRadius: '0.8rem',
             },
             elevation: 5,
-          }
+          },
         }}
         freeSolo={true}
         // clearIcon={<ClearIcon fontSize="inherit" />}
@@ -267,17 +298,32 @@ function FindZone() {
             {/* <input placeholder='Type a location' ref={location}/> */}
             <GooglePlacesAutocomplete 
               minLengthAutocomplete={2}
-            />
-            {/* <GooglePlacesAutocomplete
               selectProps={{
+                openMenuOnClick: false,
+                isClearable: true,
+                styles: style,
                 placeholder: 'Type a location',
+                components: disableIndicators,
               }}
-            /> */}
-            <textarea rows={4} placeholder='Description of this location' ref={description}/>
-            <div className={styles.rating}>
+            />
+            <textarea rows={4} style={{ padding: '0.4rem' }} placeholder='Description of this location' ref={description}/>
+            {/* <div className={styles.rating}>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', alignItems: 'center'}}>
                 <p>How difficult is this zone?</p>
-                <Tooltip title="Insert informations on how to rate the difficulty of a zone" 
+                <Tooltip
+                  open={true}
+                  title={
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                      <p style={{ fontSize: '0.9rem' }}>How to rate the difficulty of a zone?</p>
+                      <ul style={{ paddingLeft: '0.5rem' }}>
+                        <li style={{ fontSize: '0.7rem' }}>1 star - Expect fun flowy tracks similar to a green</li>
+                        <li style={{ fontSize: '0.7rem' }}>2 stars - Trails with small features to make ya smile</li>
+                        <li style={{ fontSize: '0.7rem' }}>3 stars - Natural goodness imagine blue/red</li>
+                        <li style={{ fontSize: '0.7rem' }}>4 stars - Ramping it up now, be prepared</li>
+                        <li style={{ fontSize: '0.7rem' }}>5 stars - Pro lines, are you ready?</li>
+                      </ul>
+                    </div>
+                  }
                   placement='top' 
                   enterTouchDelay={0}
                 >
@@ -308,7 +354,112 @@ function FindZone() {
                   </div>
                 )}
               </Box>
-            </div>
+            </div> */}
+            {/* <Accordion 
+              disableGutters
+              elevation={0}
+              sx={{
+                border: "2px solid #e3e3e3",
+                color: "#747474",
+                
+                "&.MuiAccordion-root:last-of-type": {
+                  borderRadius: "10px", 
+                },
+
+                "&.MuiAccordion-root:before": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <p>Need help in rating a zone?</p>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className={styles.accordionDetails}>
+                  <p>Rating the difficulty of a zone can be quite difficult and very subjective.</p>
+                  <p>That's why we came up with the following rating system to guide you in the process: </p>
+                  <ul >
+                    <li><strong>1 star</strong> - Expect fun flowy tracks similar to a green</li>
+                    <li><strong>2 stars</strong> - Trails with small features to make ya smile</li>
+                    <li><strong>3 stars</strong> - Natural goodness imagine blue/red</li>
+                    <li><strong>4 stars</strong> - Ramping it up now, be prepared</li>
+                    <li><strong>5 stars</strong> - Pro lines, are you ready?</li>
+                  </ul>
+                </div>
+              </AccordionDetails>
+            </Accordion> */}
+
+            <Accordion 
+              disableGutters
+              elevation={0}
+              sx={{
+                border: "2px solid #e3e3e3",
+                color: "#747474",
+                
+                "&.MuiAccordion-root:last-of-type": {
+                  borderRadius: "10px", 
+                },
+
+                "&.MuiAccordion-root:before": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <p>Rate the zone</p>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className={styles.accordionDetails}>
+                  <p>Rating the difficulty of a zone can be quite difficult and very subjective.</p>
+                  <p>That's why we came up with the following rating system to guide you in the process: </p>
+                  
+                  <ul >
+                    <li><strong>1 star</strong> - Expect fun flowy tracks similar to a green</li>
+                    <li><strong>2 stars</strong> - Trails with small features to make ya smile</li>
+                    <li><strong>3 stars</strong> - Natural goodness imagine blue/red</li>
+                    <li><strong>4 stars</strong> - Ramping it up now, be prepared</li>
+                    <li><strong>5 stars</strong> - Pro lines, are you ready?</li>
+                  </ul>
+
+                  <hr style={{ marginTop: '0.5rem' }}/>
+
+                  <p style={{ fontSize: '1rem', fontWeight: '400', marginTop: '0.5rem'}}>Now, rate the zone you want us to add</p>
+                  <p style={{ marginTop: '-0.3rem', fontSize: '0.7rem'}}>Click on the stars below to give a rating</p>
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Rating name="rating" value={rating}
+                      icon = {<StarIcon style={{width:"2rem",height:"2rem"}}></StarIcon>}
+                      emptyIcon = {<StarOutlineIcon style={{width:"2rem",height:"2rem"}}></StarOutlineIcon>}
+                      onChangeActive={(event, newHover) => {
+                        setHover(newHover);
+                      }}
+                      onChange={(event, newRating) => {
+                        setRating(newRating);
+                      }} 
+                    />
+                    {rating !== null && (
+                      <div style={{ marginLeft: '0.5rem', display: 'flex', flexGrow: 1, alignItems: 'center', justifyContent: 'center'}}>
+                        <p style={{ fontSize: '0.9rem', fontWeight: '400'}}>{labels[hover !== -1 ? hover : rating]}</p>
+                      </div>
+                    )}
+                  </Box>
+
+                </div>
+              </AccordionDetails>
+            </Accordion>
             
           </div>
           <div className={styles.buttonRow}>

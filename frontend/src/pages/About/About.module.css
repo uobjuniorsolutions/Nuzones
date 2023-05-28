@@ -137,6 +137,11 @@
     border: none;
 }
 
+.buttonNutunes a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nudaysContainer {
     display: flex;
     flex-direction: column;
