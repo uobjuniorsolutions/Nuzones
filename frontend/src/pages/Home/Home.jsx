@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './Home.module.css'
 import BrandAmbassadorModal from '../Pop-up/BrandAmbassadorModal';
 import { Link } from 'react-router-dom';
+import CardSlider from './Instagram/CardSlider';
 
 function Home() {
 
@@ -134,8 +135,11 @@ function Home() {
       </div>
 
       <div className={styles.instagram}>
-        <h1>Find us on Instagram</h1>
-        <div className={styles.instagramContainer}>Feed of posts in this container</div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h1>Find us on Instagram</h1>
+          <h3>Check at our Instagram at <a style={{ color: 'blue', textDecoration: 'none'}} href='https://www.instagram.com/nuzones/' target='_blank'>@nuzones</a></h3>
+        </div>
+        <CardSlider />
       </div>
 
     </div>

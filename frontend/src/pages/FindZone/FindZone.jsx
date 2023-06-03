@@ -26,7 +26,7 @@ import Maps from './Maps';
 import { useJsApiLoader } from '@react-google-maps/api';
 
 // react google places autocomplete
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 
 // labels for hover rating
 const labels = {
@@ -37,11 +37,13 @@ const labels = {
   5: "Pure madness",
 };
 
+const googleMapsLibraires = ['places'];
+
 function FindZone() {
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyA-yVU-YlGNYcwzmXzzwTHv6v12m6ReVP4",
-    libraries: ['places']
+    libraries: googleMapsLibraires
   })
 
   const [openZone, setOpenZone] = useState(false);
@@ -201,6 +203,65 @@ function FindZone() {
     getZones();
   }, []);
 
+  // state for whether or not the react select menu is open or not
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  // state for the googlePlacesAutocomplete
+  const [googlePlacesValue, setGooglePlacesValue] = useState(null);
+
+  const getLatLngFromAddress = async () => {
+    try {
+      const results = await geocodeByAddress(googlePlacesValue.label);
+      const { lat, lng } = getLatLng(results[0])
+      return { lat, lng }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const sendAddZoneEmail = async (event) => {
+    event.preventDefault();
+
+   const { lat, lng } = await getLatLngFromAddress(); 
+
+    const requestBody = {
+        type: "add_new_zone",
+        data: {
+            name: googlePlacesValue,
+            description: description.current.value,
+            rating: rating,
+            longitude: lng,
+            latitute: lat,
+        }
+    }
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(requestBody)
+    };
+
+    try {
+        const response = await fetch('/api/v1/email', requestOptions);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+          console.log("The email was successfully sent!")
+        }
+  
+    } catch (error) {
+    console.log("Error:", error);
+    }
+
+    // Before toggling the modal, add animation to the button saying whether or not sent the form
+    setTimeout(() => {
+      setGooglePlacesValue("");
+      setOpenZone(false);
+    }, 1000);
+
+    //Then, toggle the modal
+  }
+
   return (
     <div className='content'>
       <h1 className='title'>Find a Zone</h1>
@@ -217,7 +278,17 @@ function FindZone() {
         freeSolo={true}
         // clearIcon={<ClearIcon fontSize="inherit" />}
         disableClearable
-        sx={{ width: '90%' }}
+        sx={{ 
+          width: '90%',
+          // "& .MuiOutlinedInput-root": {
+          //   border: "1px solid yellow",
+          //   borderRadius: "0",
+          //   padding: "0"
+          // },
+          "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              border: "3px solid #e3e3e3"
+          }
+        }}
         options={zones.map((zone) => zone.title)}
         onInputChange={(event, newValue) => {
           const searchZone = zones.find(zone => zone.title === newValue);
@@ -293,20 +364,23 @@ function FindZone() {
         <p>Let us know where to add one!</p>
 
         {openZone ?
-        <div className={styles.openZone}>
+        <form onSubmit={sendAddZoneEmail} className={styles.openZone}>
           <div className={styles.inputs}>
-            {/* <input placeholder='Type a location' ref={location}/> */}
             <GooglePlacesAutocomplete 
               minLengthAutocomplete={2}
               selectProps={{
+                value: googlePlacesValue,
+                onChange: setGooglePlacesValue,
                 openMenuOnClick: false,
                 isClearable: true,
                 styles: style,
                 placeholder: 'Type a location',
                 components: disableIndicators,
+                onInputChange: ((value) => {setMenuIsOpen(value.length >= 2)}),
+                menuIsOpen: menuIsOpen
               }}
             />
-            <textarea rows={4} style={{ padding: '0.4rem' }} placeholder='Description of this location' ref={description}/>
+            <textarea ref={description} rows={4} style={{ padding: '0.4rem' }} placeholder='Description of this location' ref={description}/>
             {/* <div className={styles.rating}>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', alignItems: 'center'}}>
                 <p>How difficult is this zone?</p>
@@ -463,11 +537,11 @@ function FindZone() {
             
           </div>
           <div className={styles.buttonRow}>
-            <button className={styles.submit}>Submit</button>
-            <button className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
+            <button type='submit' onClick={sendAddZoneEmail} className={styles.submit}>Submit</button>
+            <button type='button' className={styles.cancel} onClick={toggleOpenZone}>Cancel</button>
             {/* Be carefull to, when submitting, get the value of the rating before closing the menu, because closing resets the value */}
           </div>
-        </div>
+        </form>
         :
         <button className={styles.addZone} onClick={toggleOpenZone}>Add a Zone</button>
         }
