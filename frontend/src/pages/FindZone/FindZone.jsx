@@ -380,7 +380,7 @@ function FindZone() {
                 menuIsOpen: menuIsOpen
               }}
             />
-            <textarea ref={description} rows={4} style={{ padding: '0.4rem' }} placeholder='Description of this location' ref={description}/>
+            <textarea ref={description} rows={4} style={{ padding: '0.4rem' }} placeholder='Description of this location'/>
             {/* <div className={styles.rating}>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', alignItems: 'center'}}>
                 <p>How difficult is this zone?</p>
