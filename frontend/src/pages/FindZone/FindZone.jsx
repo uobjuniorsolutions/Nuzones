@@ -212,7 +212,7 @@ function FindZone() {
   const getLatLngFromAddress = async () => {
     try {
       const results = await geocodeByAddress(googlePlacesValue.label);
-      const { lat, lng } = getLatLng(results[0])
+      const { lat, lng } = await getLatLng(results[0])
       return { lat, lng }
     } catch (error) {
       console.error(error)
@@ -227,7 +227,7 @@ function FindZone() {
     const requestBody = {
         type: "add_new_zone",
         data: {
-            name: googlePlacesValue,
+            name: googlePlacesValue.label,
             description: description.current.value,
             rating: rating,
             longitude: lng,
