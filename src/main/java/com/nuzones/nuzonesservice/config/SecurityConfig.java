@@ -38,6 +38,10 @@ public class SecurityConfig {
                 });
 
         return http
+                .requiresChannel()
+                    .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+                .requiresSecure()
+                    .and()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/zones/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/v1/zones/**").authenticated()
