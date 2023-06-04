@@ -212,8 +212,8 @@ function FindZone() {
   const getLatLngFromAddress = async () => {
     try {
       const results = await geocodeByAddress(googlePlacesValue.label);
-      const { lat, lng } = await getLatLng(results[0])
-      return { lat, lng }
+      const latLng = await getLatLng(results[0]);
+      return latLng
     } catch (error) {
       console.error(error)
     }
@@ -222,7 +222,7 @@ function FindZone() {
   const sendAddZoneEmail = async (event) => {
     event.preventDefault();
 
-   const { lat, lng } = await getLatLngFromAddress(); 
+    const latLng = await getLatLngFromAddress(); 
 
     const requestBody = {
         type: "add_new_zone",
@@ -230,8 +230,8 @@ function FindZone() {
             name: googlePlacesValue.label,
             description: description.current.value,
             rating: rating,
-            longitude: lng,
-            latitute: lat,
+            longitude: latLng.lng,
+            latitute: latLng.lat,
         }
     }
 
@@ -280,14 +280,9 @@ function FindZone() {
         disableClearable
         sx={{ 
           width: '90%',
-          // "& .MuiOutlinedInput-root": {
-          //   border: "1px solid yellow",
-          //   borderRadius: "0",
-          //   padding: "0"
-          // },
           "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              border: "3px solid #e3e3e3"
-          }
+              border: "2px solid #e3e3e3"
+          },
         }}
         options={zones.map((zone) => zone.title)}
         onInputChange={(event, newValue) => {
