@@ -231,7 +231,7 @@ function FindZone() {
           description: description.current.value,
           rating: rating,
           longitude: latLng.lng,
-          latitute: latLng.lat,
+          latitude: latLng.lat,
       }
     }
 
@@ -240,8 +240,6 @@ function FindZone() {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(requestBody)
     };
-
-    console.log(requestOptions)
 
     try {
       const response = await fetch('/api/v1/email', requestOptions);
