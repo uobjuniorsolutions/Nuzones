@@ -225,32 +225,34 @@ function FindZone() {
     const latLng = await getLatLngFromAddress(); 
 
     const requestBody = {
-        type: "add_new_zone",
-        data: {
-            name: googlePlacesValue.label,
-            description: description.current.value,
-            rating: rating,
-            longitude: latLng.lng,
-            latitute: latLng.lat,
-        }
+      type: "add_new_zone",
+      data: {
+          name: googlePlacesValue.label,
+          description: description.current.value,
+          rating: rating,
+          longitude: latLng.lng,
+          latitute: latLng.lat,
+      }
     }
 
     const requestOptions = {
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(requestBody)
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(requestBody)
     };
 
+    console.log(requestOptions)
+
     try {
-        const response = await fetch('/api/v1/email', requestOptions);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        } else {
-          console.log("The email was successfully sent!")
-        }
+      const response = await fetch('/api/v1/email', requestOptions);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
+        console.log("The email was successfully sent!")
+      }
   
     } catch (error) {
-    console.log("Error:", error);
+      console.log("Error:", error);
     }
 
     // Before toggling the modal, add animation to the button saying whether or not sent the form
