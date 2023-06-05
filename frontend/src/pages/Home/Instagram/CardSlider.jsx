@@ -51,7 +51,7 @@ const CardSlider = ({ token }) => {
       >
         {mediaIDList.map((media, index) => (
           <SwiperSlide key={index}>
-            <InstagramMedia accessToken={accessToken} mediaID={media.id} />
+            <InstagramMedia accessToken={token} mediaID={media.id} />
           </SwiperSlide>
         ))}
       </Swiper>
