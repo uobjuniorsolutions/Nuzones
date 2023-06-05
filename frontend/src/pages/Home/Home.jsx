@@ -7,7 +7,6 @@ import CardSlider from './Instagram/CardSlider';
 function Home() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [instaAccessToken, setInstaAccessToken] = useState("");
 
   function toggleModal() {
     setIsModalOpen(!isModalOpen);
@@ -17,17 +16,11 @@ function Home() {
     try {
       let response = await fetch('/api/v1/token')
       let data = await response.json()
-      console.log('data', data);
-      setInstaAccessToken(data.token);
+      return data.token
     } catch (err) {
       console.error(err);
     }
   }
-
-  useEffect(() => {
-    getInstaAccessToken();
-    console.log('instaToken', instaAccessToken);
-  }, []);
 
   return (
     <div className={styles.content}>
@@ -129,7 +122,7 @@ function Home() {
           <h1>Find us on Instagram</h1>
           <h3>Check at our Instagram at <a style={{ color: 'blue', textDecoration: 'none'}} href='https://www.instagram.com/nuzones/' target='_blank'>@nuzones</a></h3>
         </div>
-        <CardSlider accessToken={instaAccessToken} />
+        <CardSlider accessToken={getInstaAccessToken()} />
       </div>
 
     </div>
