@@ -31,7 +31,7 @@ import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-goo
 // labels for hover rating
 const labels = {
   1: "Nice & Chill",
-  2: "Add smiles there",
+  2: "Add smiles here",
   3: "It's getting fruty",
   4: "Ok ok, letsavew",
   5: "Pure madness",
@@ -483,7 +483,7 @@ function FindZone() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <p>Rate the zone</p>
+                <p>Rating a Zone</p>
               </AccordionSummary>
               <AccordionDetails>
                 <div className={styles.accordionDetails}>
@@ -494,7 +494,7 @@ function FindZone() {
                     <li><strong>1 star</strong> - Expect fun flowy tracks similar to a green</li>
                     <li><strong>2 stars</strong> - Trails with small features to make ya smile</li>
                     <li><strong>3 stars</strong> - Natural goodness imagine blue/red</li>
-                    <li><strong>4 stars</strong> - Ramping it up now, be prepared</li>
+                    <li><strong>4 stars</strong> - Black graded trail, its ramping up now</li>
                     <li><strong>5 stars</strong> - Pro lines, are you ready?</li>
                   </ul>
 

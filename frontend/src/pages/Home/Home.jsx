@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Home.module.css'
 import BrandAmbassadorModal from '../Pop-up/BrandAmbassadorModal';
 import { Link } from 'react-router-dom';
@@ -6,46 +6,43 @@ import CardSlider from './Instagram/CardSlider';
 
 function Home() {
 
-  // Could add a scroll down thingy below share your adventures?
-  // Add hover effects?
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [instaAccessToken, setInstaAccessToken] = useState("");
 
   function toggleModal() {
     setIsModalOpen(!isModalOpen);
   }
 
+  const getInstaAccessToken = async () => {
+    try {
+      let response = await fetch(`/api/v1/token`)
+      let data = await response.json()
+      setInstaAccessToken(data.token);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    getInstaAccessToken();
+  }, []);
+
   return (
     <div className={styles.content}>
 
       <div className={styles.adventures}>
-      {/* <div style={{backgroundImage: 'url(https://res.cloudinary.com/dpryg3lq9/image/upload/v1682326247/Main_Image_o2zyep.jpg)'}} className={styles.adventures}> */}
         <p className={styles.heroTitle}>Discover NuZones</p>
         <div className={styles.bottomContainer}>
           <div className={styles.description}>
-            {/* <p>Whether you are looking for someone to join you on your power hour or a whole day adventure, we've got you covered. <br /> Head to our 'Find a Zone' page and look for groups either in your area or somewhere you are planning to go.</p> */}
             <p>Looking for someone to join you on your whole day adventure?</p>
             <p>On <strong>Find a Zone</strong>, you'll find someone anywhere you go!</p> 
           </div>
           <div className={styles.buttonContainer}>
             <Link className='find_crew' to='/zone'>Find a Zone</Link>
-            {/* <button className='brand_ambassador' onClick={toggleModal} >Become a Brand Ambassador</button> */}
-
             <BrandAmbassadorModal toggleModal={toggleModal} isModalOpen={isModalOpen}/>
-
           </div>
         </div>
       </div>
-
-      {/* <div className={styles.videoContainer}>
-        <div className={styles.video}> Video </div>
-        <div className={styles.videoText}>
-          <p>Intro text for the promo video</p>
-          <button className='find_crew'>
-            <Link to='/zone'>Find a Zone</Link>
-          </button>
-        </div>
-      </div> */}
 
       <div className={styles.sponsors}>
         <h1>Thoughts about NuZones</h1>
@@ -80,15 +77,6 @@ function Home() {
 
       <div className={styles.help}>
         <h1>How can NuZones help you?</h1>
-          {/* <div className={styles.helpTextBox}>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
-              <p>Whether you are looking to build your crew or discover new locations, an adventure is best done together.</p> 
-              <p>If you are interested in receiving brand discount codes and hearing updates from the NuZones family, join the crew!</p>
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-              <button style={{justifyContent: 'center'}} className='brand_ambassador' onClick={toggleModal}>Join the Crew</button>
-            </div>
-          </div> */}
           <div className={styles.helpImageContainer}>
             <div className={styles.helpFirstRow}>
               <img style={{transform: "rotate(12deg)"}} src='./Middle.jpg' alt='middle image'/>
@@ -139,7 +127,7 @@ function Home() {
           <h1>Find us on Instagram</h1>
           <h3>Check at our Instagram at <a style={{ color: 'blue', textDecoration: 'none'}} href='https://www.instagram.com/nuzones/' target='_blank'>@nuzones</a></h3>
         </div>
-        <CardSlider />
+        <CardSlider accessToken={instaAccessToken} />
       </div>
 
     </div>
