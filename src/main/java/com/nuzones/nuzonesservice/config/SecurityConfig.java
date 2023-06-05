@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/zones/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/v1/zones/**").authenticated()
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/zones/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/token/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin().disable()
