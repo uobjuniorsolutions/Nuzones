@@ -35,6 +35,7 @@ button {
 }
 
 .addZone {
+    color: black;
     margin-top: 15px;
     cursor: pointer;
     background-color: #e2e2e2;
@@ -104,6 +105,7 @@ button {
 }
 
 .submit {
+    color: black;
     width: 100%;
     cursor: pointer;
     background-color: #86F29E;
@@ -113,6 +115,7 @@ button {
 }
 
 .cancel {
+    color: black;
     width: 100%;
     cursor: pointer;
     background-color: #F1958F;
