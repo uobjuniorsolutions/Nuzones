@@ -14,11 +14,13 @@ function About() {
       {/* Fix the pb with img not same size when I'll have the img */}
 
       <div className={styles.blocks}>
-        <div className={styles.section} style={{backgroundColor: '#045680'}}>
+        <div className={styles.section} style={{backgroundColor: '#045680', paddingBottom: '5rem'}}>
           <h1 className={styles.sectionTitleWhite}>NuPics</h1>
           <div className={styles.sectionContainer}>
-            <div className={styles.image}>
-              <img src='./NuPics.jpg'/>
+            <div className={styles.imageNupics} style={{ position: 'relative' }}>
+              <img src='./NuPics.jpg' style={{ position: 'absolute', zIndex: 1 }}/>
+              <div className={styles.circleNupics} style={{ position: 'absolute', top: '-2.5rem', left: '2.5rem', }} />
+              <div className={styles.circleNupics} style={{ position: 'absolute', bottom: '-2.5rem', right: '1.5rem' }} />
             </div>
             <div className={styles.textBlueSection}>
               <h2>Outdoor adventures are meant to be shared with others.</h2>
@@ -45,15 +47,21 @@ function About() {
           <div className={`${styles.sectionContainer} ${styles.reverse}`}>
             <div className={styles.textWhiteSection}>
               <div className={styles.nutagsListElem}>
-                <div className={styles.square}></div>
+                <div className={styles.square}>
+                  <img src='./tickbox.png' width='60px' height='60px' />
+                </div>
                 <p>NuTags is a unique and competitive way to explore new locations!</p>
               </div>
               <div className={styles.nutagsListElem}>
                 <p>We are constantly setting up Tags for you to scan around tracks.</p>
-                <div className={styles.square}></div>
+                <div className={styles.square}>
+                  <img src='./nfc.png' width='60px' height='60px' />
+                </div>
               </div>
               <div className={styles.nutagsListElem}>
-                <div className={styles.square}></div>
+                <div className={styles.square}>
+                  <img src='./stopwatch.png' width='60px' height='60px' />
+                </div>
                 <p>Scan all Tags from a track and compete with others on duration!</p>
               </div>
             </div>
