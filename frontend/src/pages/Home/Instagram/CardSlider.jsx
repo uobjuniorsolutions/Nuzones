@@ -10,11 +10,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const CardSlider = () => {
+const CardSlider = ({ accessToken }) => {
 
   const [mediaIDList, setMediaIDList] = useState([]);
   const nuzonesUserId = 6538547276155754;
-  const accessToken = "IGQVJVa1hNcUdGakxZASEgtYk9sdU5KR3lrbWVCbVVEOEhjdGlVLThlYXpLNGpfQ2RzVGdCcWxXREtULTZAiUnpqRjhOV1l2cjAtYnBvU1pWVjFNRXJQdk9JMTB4TVdab1owUHUyRC0yb21KWU05VGZAsawZDZD";
+  // const accessToken = "IGQVJVa1hNcUdGakxZASEgtYk9sdU5KR3lrbWVCbVVEOEhjdGlVLThlYXpLNGpfQ2RzVGdCcWxXREtULTZAiUnpqRjhOV1l2cjAtYnBvU1pWVjFNRXJQdk9JMTB4TVdab1owUHUyRC0yb21KWU05VGZAsawZDZD";
 
   const getMediaIDList = async () => {
     try {
