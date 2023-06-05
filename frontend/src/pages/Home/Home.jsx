@@ -15,8 +15,9 @@ function Home() {
 
   const getInstaAccessToken = async () => {
     try {
-      let response = await fetch(`/api/v1/token`)
+      let response = await fetch('/api/v1/token')
       let data = await response.json()
+      console.log('data', data);
       setInstaAccessToken(data.token);
     } catch (err) {
       console.error(err);
@@ -25,6 +26,7 @@ function Home() {
 
   useEffect(() => {
     getInstaAccessToken();
+    console.log('instaToken', instaAccessToken);
   }, []);
 
   return (
