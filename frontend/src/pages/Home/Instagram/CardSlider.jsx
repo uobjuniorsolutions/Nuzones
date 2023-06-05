@@ -10,15 +10,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const CardSlider = ({ accessToken }) => {
+const CardSlider = ({ token }) => {
 
   const [mediaIDList, setMediaIDList] = useState([]);
   const nuzonesUserId = 6538547276155754;
-  // const accessToken = "IGQVJVa1hNcUdGakxZASEgtYk9sdU5KR3lrbWVCbVVEOEhjdGlVLThlYXpLNGpfQ2RzVGdCcWxXREtULTZAiUnpqRjhOV1l2cjAtYnBvU1pWVjFNRXJQdk9JMTB4TVdab1owUHUyRC0yb21KWU05VGZAsawZDZD";
 
   const getMediaIDList = async () => {
     try {
-      let response = await fetch(`https://graph.instagram.com/v11.0/${nuzonesUserId}/media?access_token=${accessToken}`)
+      let response = await fetch(`https://graph.instagram.com/v11.0/${nuzonesUserId}/media?access_token=${token}`)
       let data = await response.json()
       setMediaIDList(data.data.slice(0,10));
     } catch (err) {
