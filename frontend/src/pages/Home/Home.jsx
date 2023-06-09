@@ -54,7 +54,7 @@ function Home() {
               <h2>Fin Graham</h2>
               <h3>World Champion</h3>
             </div>
-            <p>"As a professional cyclist I ride across the globe. NuZones is great, it helps me connect with new riders to explore brand new zones"</p>
+            <p>"As a professional cyclist I ride across the globe. NuZones is great, it helps me connect with new riders to explore brand new zones."</p>
           </div>
           <div className={styles.sponsorsElement}>
             <img src='./mudhuggerLogo.jpg' />
@@ -62,15 +62,15 @@ function Home() {
               <h2>Mudhugger</h2>
               <h3>Industry Representative</h3>
             </div>
-            <p>"Of course, cycling is more fun with others. NuZones is an obvious way to build up your crew and find that secret loam trail you've always been searching for"</p>
+            <p>"Of course, cycling is more fun with others. NuZones is an obvious way to build up your crew and find that secret loam trail you've always been searching for."</p>
           </div>
           <div className={styles.sponsorsElement}>
-            <img src='./FinGraham.jpg' />
+            <img src='./Malvern.jpg' />
             <div className={styles.nameAndSubheading}>
-              <h2>?</h2>
-              <h3>?</h3>
+              <h2>Malvern Shredders</h2>
+              <h3>Cycling group</h3>
             </div>
-            <p>"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam, consectetur eos!"</p>
+            <p>"We've added our group to the NuZones page because it is the best way for new riders to explore our amazing trail network."</p>
           </div>
         </div>
       </div>
