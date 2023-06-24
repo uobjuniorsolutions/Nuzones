@@ -45,4 +45,8 @@ public class InstagramTokenServiceImpl implements InstagramTokenService {
         }
         tokenRepository.save(instagramToken);
     }
+
+    public void foo() {
+
+    }
 }
